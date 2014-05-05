@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>/pykcsd-blog</loc>
+    </url>
+    
+    
+    <url>
+        <loc>/pykcsd-blog/feed.xml</loc>
+    </url>
+    
+    <url>
+        <loc>/pykcsd-blog/search.json</loc>
+    </url>
+    
+    <url>
+        <loc>/pykcsd-blog/sitemap.xml</loc>
+    </url>
+    
+    <url>
+        <loc>/pykcsd-blog/about/</loc>
+    </url>
+    
+    <url>
+        <loc>/pykcsd-blog/index.html</loc>
+    </url>
+    
+    <url>
+        <loc>/pykcsd-blog/tags/</loc>
+    </url>
+    
+    <url>
+        <loc>/pykcsd-blog/theme-setup/</loc>
+    </url>
+    
+    <url>
+        <loc>/pykcsd-blog/articles/</loc>
+    </url>
+    
+    <url>
+        <loc>/pykcsd-blog/404.html</loc>
+    </url>
+    
+
+    
+    <url>
+        <loc>/pykcsd-blog/articles/proposal/</loc>
+    </url>
+    
+</urlset>
