@@ -10,7 +10,7 @@ image:
 
 I'm **Grzegorz Parka**, software developer based in Warsaw (Poland), with academic background both in Technical Physics and Computer Science, attendant of [Google Summer of Code 2014](http://www.google-melange.com/gsoc/homepage/google/gsoc2014).
 
-For this summer I was chosen by [INCF](http://www.incf.org/) to work on the Python Object Oriented Kernel Current Source Density project, shortly **pykCSD**. The project is under the supervision of prof. Daniel Wójcik from the Polish Node of INCF, [Nencki Institute of Experimental Biology](http://en.nencki.gov.pl/).
+For this summer I was chosen by [INCF](http://www.incf.org/) to work on the Python Object Oriented Kernel Current Source Density project, shortly **pykCSD**. The project is under the supervision of Daniel Wójcik from the Polish Node of INCF, [Nencki Institute of Experimental Biology](http://en.nencki.gov.pl/).
 
 **Kernel Current Source Density**[^1] is a recently developed method for estimating the density of trans-membrane current sources, which can be used for a detailed study of neuronal synaptic dynamics. The goal of this project is to implement the method using a scientist and developer friendly stack -- Python, NumPy and SciPy.
 
