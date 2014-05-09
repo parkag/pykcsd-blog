@@ -5,25 +5,25 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Page Not Found &#8211; pykCSD @ GSoC</title>
-<meta name="description" content="Page not found. Your pixels are in another canvas.">
-
+<title>Community Bonding Period (Week -2) &#8211; pykCSD @ GSoC</title>
+<meta name="description" content="First hacks, meeting at Nencki Institute">
+<meta name="keywords" content="community bonding period, discovering INCF">
 
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Page Not Found">
-<meta property="og:description" content="Page not found. Your pixels are in another canvas.">
-<meta property="og:url" content="http://localhost:4000/404.html">
+<meta property="og:title" content="Community Bonding Period (Week -2)">
+<meta property="og:description" content="First hacks, meeting at Nencki Institute">
+<meta property="og:url" content="http://localhost:4000/articles/week-minus-2/">
 <meta property="og:site_name" content="pykCSD @ GSoC">
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/404.html">
+<link rel="canonical" href="http://localhost:4000/articles/week-minus-2/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="pykCSD @ GSoC Feed">
 
 
@@ -58,7 +58,7 @@
 
 </head>
 
-<body id="page">
+<body id="post">
 
 <div class="navigation-wrapper">
 	<nav role="navigation" id="site-nav" class="animated drop">
@@ -104,26 +104,70 @@
 
 
 <div id="main" role="main">
-  <article class="entry">
+  <article class="hentry">
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <h1 class="entry-title">Page Not Found</h1>
+        <span class="entry-tags"><a href="http://localhost:4000/tags/#community bonding period" title="Pages tagged community bonding period">community bonding period</a>&nbsp;&bull;&nbsp;<a href="http://localhost:4000/tags/#discovering INCF" title="Pages tagged discovering INCF">discovering INCF</a></span>
+        
+          <h1 class="entry-title">Community Bonding Period (Week -2)</h1>
+        
       </header>
+      <footer class="entry-meta">
+        <img src="http://localhost:4000/images/profi_photo.jpg" alt="Grzegorz Parka photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://localhost:4000/about/" title="About Grzegorz Parka">Grzegorz Parka</a></span></span>
+        <span class="entry-date date published"><time datetime="2014-05-08T00:00:00+02:00"><i class="icon-calendar-empty"></i> May 08, 2014</time></span>
+        <span class="entry-date date modified"><time datetime="2014-05-07"><i class="icon-pencil"></i> May 07, 2014</time></span>
+        <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a></span>
+        <span><a href="http://localhost:4000/articles/week-minus-2/" rel="bookmark" title="Community Bonding Period (Week -2)"><i class="icon-link"></i> Permalink</a></span>
+        
+        <span class="social-share-facebook">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/week-minus-2/" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
+        <span class="social-share-twitter">
+            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Community Bonding Period (Week -2)&url=http://localhost:4000/articles/week-minus-2/&via=" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
+        <span class="social-share-googleplus">
+            <a href="https://plus.google.com/share?url=http://localhost:4000/articles/week-minus-2/" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
+            <!-- /.social-share -->
+      </footer>
       <div class="entry-content">
-        <p>Sorry, but the page you were trying to view does not exist — perhaps you can try searching for it below.</p>
+        <p>During this week I’ve done some early hacking and made a brutal Python port of the existing one-dimensional kCSD variant. The purpose of this port was to familliarize myself with the existing program flow and visualize some partial matrices.</p>
 
-<script type="text/javascript">
-  var GOOG_FIXURL_LANG = 'en';
-  var GOOG_FIXURL_SITE = 'http://localhost:4000'
-</script>
+<p>Surprisingly, making kCSD work in such fashion required only minor changes to the original Matlab code.</p>
 
-<script type="text/javascript" src="http://linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js">
-</script>
+<p>An IPython Notebook may be viewed <a href="http://nbviewer.ipython.org/github/parkag/notebooks/blob/master/pykCSD/pykCSD.ipynb">here</a>.</p>
 
+<p>Yesterday I met with my Mentor, Daniel Wójcik (living in Warsaw I have the privilege to meet with him in person). He suggested that the kCSD framework may be split into two independent parts:</p>
 
+<ul>
+  <li>statistical part</li>
+  <li>basis function managing part</li>
+</ul>
+
+<p>It is possible that the statistical part will be shared among all the dimensionalities later on. </p>
+
+<p>The basis function management part will be different for each dimensionality. This is because in lower dimensionality (d &lt; 3) we need to assume a specific distribution of sources in the missing dimensions.</p>
+
+<p>After discussing the kCSD details, we also spoke about the current projects in both Nencki Institute and INCF, such as <a href="http://www.3dbar.org">digital Brain Atlasses</a>(3dbar), <a href="http://www.openworm.org/">OpenWorm</a> and few smaller ones.</p>
+
+<p>By a coincidence, one of the creators of 3dbar, and one of INCF mentors at GSoC 2014, Piotr Majka was going to practise before his PhD thesis defense shortly afterwards.</p>
+
+<p>He told us about his successful procedure of integration of brain imaging data obtained from immunohistochemical stains, blockface images or through MRI to produce high-quality and consistent digital brain atlasses.</p>
+
+<p>Seeing my enthusiasm, he also invited me to his public PhD thesis defense on the following Friday.</p>
+
+<figure>
+	<img src="http://localhost:4000/images/gsoc_horizontal.jpg" width="100%" />
+</figure>
+
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:4000/articles/proposal/" class="btn" title="Google Summer of Code pykCSD proposal">Previous article</a>
+      
+      
+    </nav><!-- /.pagination -->
   </article>
 </div><!-- /#main -->
 
@@ -184,7 +228,27 @@
 </script>
 
 
-          
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'parkaggithubiopykcsdblog'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>	        
 
 </body>
 </html>
