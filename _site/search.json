@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Community Bonding Period and preparation (Week -1)",
+		  "category"   : "articles",
+		  "url"        : "http://localhost:4000/articles/week-minus-1/",
+		  "date"       : "2014-05-15 00:00:00 +0200",
+		  "shortdate"  : "May 15, 2014"
+		} ,
+	
+		{
 		  "title"      : "Community Bonding Period (Week -2)",
 		  "category"   : "articles",
 		  "url"        : "http://localhost:4000/articles/week-minus-2/",

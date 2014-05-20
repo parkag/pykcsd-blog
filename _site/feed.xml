@@ -4,13 +4,57 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000/" />
-<updated>2014-05-13T12:47:24+02:00</updated>
+<updated>2014-05-20T01:58:51+02:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Grzegorz Parka</name>
   <uri>http://localhost:4000/</uri>
   <email>grzegorz.parka@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Community Bonding Period and preparation (Week -1)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week-minus-1/"/>
+  <id>http://localhost:4000/articles/week-minus-1</id>
+  <updated>2014-05-15T00:00:00-00:00</updated>
+  <published>2014-05-15T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;setting-up-the-environment&quot;&gt;Setting up the environment&lt;/h2&gt;
+
+&lt;p&gt;During this week I’ve set the &lt;a href=&quot;https://github.com/INCF/pykCSD&quot;&gt;project repository&lt;/a&gt;.
+I followed these posts &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; to start the project using current best practices. This includes reusing audrey template &lt;em&gt;cookiecutter-pypackage&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;The first impression is that the template contains a bit too many text and config files (running tests, generating documentation, deploying to PyPI), but I believe that getting familliar with them will pay off in the next stages of project.&lt;/p&gt;
+
+&lt;h2 id=&quot;other-than-that&quot;&gt;Other than that&lt;/h2&gt;
+
+&lt;p&gt;Meanwhile I am also learning about &lt;a href=&quot;http://scikit-learn.org/stable/modules/cross_validation.html&quot;&gt;cross-validation&lt;/a&gt; and the Scikit-learn package. I will try to use the existing cross-validation from Scikit-learn to find the regularization parameter for smoothing data in kCSD. This is useful for determining and reducing the noise from the potential measurements.&lt;/p&gt;
+
+&lt;p&gt;My idea is to create fast and experimental versions as scripts in IPython notebook and then gradually refactor and move new features to the project on the INCF repo.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/&quot;&gt;Jeff Knupp: Open Sourcing a Python Project - the right way&lt;/a&gt;&lt;a href=&quot;#fnref:1&quot; rel=&quot;reference&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://pydanny.com/cookie-project-templates-made-easy.html&quot;&gt;Daniel Greenfield: Cookie project templates made easy&lt;/a&gt;&lt;a href=&quot;#fnref:2&quot; rel=&quot;reference&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week-minus-1/&quot;&gt;Community Bonding Period and preparation (Week -1)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 15, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
