@@ -30,11 +30,12 @@ $$ \rho_q = \lim_{V \rightarrow 0} \frac{Q}{V} \left[ \frac{C}{m^3}\right]$$
 which is a scalar.
 
 Current Source Density[^3] has the meaning of 
+
 $$C(r,t) = \sum_{n=1}^N I_n(t)\delta ^3(r-r_n) \left[\frac{A}{m^3} \right]$$
 
 and
 
-$$\phi(r,t) = \frac{1}{4\pi \sigma} \iiint_V \frac{C(r', t)}{| r-r'|} d^3 r'$$
+$$ \phi(r,t) = \frac{1}{4\pi \sigma} \iiint _V \frac{C(r', t)}{|r-r'|} d^3 r' $$
 
 # Kernel Density
 This is about statistics.
