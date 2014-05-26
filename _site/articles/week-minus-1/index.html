@@ -56,6 +56,8 @@
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
 
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 
 <body id="post">
@@ -133,27 +135,26 @@
         <h2 id="setting-up-the-environment">Setting up the environment</h2>
 
 <p>During this week I’ve set the <a href="https://github.com/INCF/pykCSD">project repository</a>.
-I followed these posts <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup> to start the project using current best practices. This includes reusing audrey template <em>cookiecutter-pypackage</em>.</p>
+I followed these posts <sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> <sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> to start the project using current best practices. This includes reusing audreyr’s cookiecutter and <em>pypackage</em> template.</p>
 
-<p>The first impression is that the template contains a bit too many text and config files (running tests, generating documentation, deploying to PyPI), but I believe that getting familliar with them will pay off in the next stages of project.</p>
+<p>The first impression is that the template contains a bit too many text and config files (running tests, generating documentation, deploying to PyPI), but I believe that getting familliar with them will pay off in the next stages of the project.</p>
 
 <h2 id="other-than-that">Other than that</h2>
 
-<p>Meanwhile I am also learning about <a href="http://scikit-learn.org/stable/modules/cross_validation.html">cross-validation</a> and the Scikit-learn package. I will try to use the existing cross-validation from Scikit-learn to find the regularization parameter for smoothing data in kCSD. This is useful for determining and reducing the noise from the potential measurements.</p>
+<p>Meanwhile I am also learning about <a href="http://scikit-learn.org/stable/modules/cross_validation.html">cross-validation</a> and the Scikit-learn package. I will try to use the existing cross-validation from Scikit-learn to find the regularization parameter for smoothing the data in kCSD. This is useful for determining and reducing the noise from the potential measurements.</p>
 
-<p>My idea is to create fast and experimental versions as scripts in IPython notebook and then gradually refactor and move new features to the project on the INCF repo.</p>
+<p>My idea is to create hacky and experimental versions as scripts in IPython notebook and then gradually refactor and move new features to the project on the INCF repo.</p>
 
 <figure>
 	<img src="http://localhost:4000/images/gsoc_horizontal.jpg" width="100%" />
 </figure>
-
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p><a href="http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/">Jeff Knupp: Open Sourcing a Python Project - the right way</a><a href="#fnref:1" rel="reference">&#8617;</a></p>
+      <p><a href="http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/">Jeff Knupp: Open Sourcing a Python Project - the right way</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
-      <p><a href="http://pydanny.com/cookie-project-templates-made-easy.html">Daniel Greenfield: Cookie project templates made easy</a><a href="#fnref:2" rel="reference">&#8617;</a></p>
+      <p><a href="http://pydanny.com/cookie-project-templates-made-easy.html">Daniel Greenfield: Cookie project templates made easy</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -165,6 +166,8 @@ I followed these posts <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></s
       
         <a href="http://localhost:4000/articles/week-minus-2/" class="btn" title="Community Bonding Period (Week -2)">Previous article</a>
       
+      
+        <a href="http://localhost:4000/articles/confusion/" class="btn" title="Confusing definitions">Next article</a>
       
     </nav><!-- /.pagination -->
   </article>

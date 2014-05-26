@@ -34,10 +34,6 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/theme-setup/</loc>
-    </url>
-    
-    <url>
         <loc>http://localhost:4000/articles/</loc>
     </url>
     
@@ -46,6 +42,10 @@
     </url>
     
 
+    
+    <url>
+        <loc>http://localhost:4000/articles/confusion/</loc>
+    </url>
     
     <url>
         <loc>http://localhost:4000/articles/week-minus-1/</loc>

@@ -4,13 +4,83 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000/" />
-<updated>2014-05-20T01:58:51+02:00</updated>
+<updated>2014-05-26T17:30:36+02:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Grzegorz Parka</name>
   <uri>http://localhost:4000/</uri>
   <email>grzegorz.parka@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Confusing definitions]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/confusion/"/>
+  <id>http://localhost:4000/articles/confusion</id>
+  <updated>2014-05-21T00:00:00-00:00</updated>
+  <published>2014-05-20T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;&lt;strong&gt;Definitions&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#currentchargecurrent-source-density&quot;&gt;(Current/Charge/Current Source) Density&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#kernel-density&quot;&gt;Kernel Density&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The pykCSD project requires good knowledge of linear algebra, calculus, statistics and (bio)electromagnetism. Trying to fully understand the Kernel Current Source Density method I found few misleading definitions more or less connected with the topic. I would like to keep them here for the future reference.&lt;/p&gt;
+
+&lt;h1 id=&quot;currentchargecurrent-source-density&quot;&gt;(Current/Charge/Current Source) Density&lt;/h1&gt;
+&lt;p&gt;Current Density&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;script type=&quot;math/tex&quot;&gt;\vec{J}&lt;/script&gt; is the electric current &lt;script type=&quot;math/tex&quot;&gt;\Delta I&lt;/script&gt; (moving charge) per unit area S &lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\vec{J} = \lim_{S \rightarrow 0} \frac{\Delta I(S) \widehat{a}_{max}}{S} \left[ \frac{A}{m^2}\right], \text{ where } \Delta I = \lim_{\Delta t \rightarrow 0}\frac{\Delta Q}{\Delta t}&lt;/script&gt;
+
+&lt;p&gt;which is a vector.&lt;/p&gt;
+
+&lt;p&gt;Charge Density is electric charge per unit volume (or area or line)&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; \rho_q = \lim_{V \rightarrow 0} \frac{Q}{V} \left[ \frac{C}{m^3}\right]&lt;/script&gt;
+
+&lt;p&gt;which is a scalar.&lt;/p&gt;
+
+&lt;p&gt;Current Source Density&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; is more like charge density.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C(r,t) = \sum_{n=1}^N I_n(t)\delta ^3(r-r_n) \left[\frac{A}{m^3} \right]&lt;/script&gt;
+
+&lt;p&gt;and&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$$\phi(r,t) = \frac{1}{4\pi \sigma} \iiint_V \frac{C(r’, t)}{\left&lt;/td&gt;
+      &lt;td&gt;r-r’ \rbrace} d^3 r’$$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;kernel-density&quot;&gt;Kernel Density&lt;/h1&gt;
+&lt;p&gt;ok2&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Current_density&quot;&gt;Current density at wikipedia&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.csc.kth.se/~helinden/PettersenLindenDaleEinevoll-BookChapter-revised.pdf&quot;&gt;Current source density&lt;/a&gt; &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/confusion/&quot;&gt;Confusing definitions&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 20, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -28,27 +98,26 @@
   <content type="html">&lt;h2 id=&quot;setting-up-the-environment&quot;&gt;Setting up the environment&lt;/h2&gt;
 
 &lt;p&gt;During this week I’ve set the &lt;a href=&quot;https://github.com/INCF/pykCSD&quot;&gt;project repository&lt;/a&gt;.
-I followed these posts &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; to start the project using current best practices. This includes reusing audrey template &lt;em&gt;cookiecutter-pypackage&lt;/em&gt;.&lt;/p&gt;
+I followed these posts &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; to start the project using current best practices. This includes reusing audreyr’s cookiecutter and &lt;em&gt;pypackage&lt;/em&gt; template.&lt;/p&gt;
 
-&lt;p&gt;The first impression is that the template contains a bit too many text and config files (running tests, generating documentation, deploying to PyPI), but I believe that getting familliar with them will pay off in the next stages of project.&lt;/p&gt;
+&lt;p&gt;The first impression is that the template contains a bit too many text and config files (running tests, generating documentation, deploying to PyPI), but I believe that getting familliar with them will pay off in the next stages of the project.&lt;/p&gt;
 
 &lt;h2 id=&quot;other-than-that&quot;&gt;Other than that&lt;/h2&gt;
 
-&lt;p&gt;Meanwhile I am also learning about &lt;a href=&quot;http://scikit-learn.org/stable/modules/cross_validation.html&quot;&gt;cross-validation&lt;/a&gt; and the Scikit-learn package. I will try to use the existing cross-validation from Scikit-learn to find the regularization parameter for smoothing data in kCSD. This is useful for determining and reducing the noise from the potential measurements.&lt;/p&gt;
+&lt;p&gt;Meanwhile I am also learning about &lt;a href=&quot;http://scikit-learn.org/stable/modules/cross_validation.html&quot;&gt;cross-validation&lt;/a&gt; and the Scikit-learn package. I will try to use the existing cross-validation from Scikit-learn to find the regularization parameter for smoothing the data in kCSD. This is useful for determining and reducing the noise from the potential measurements.&lt;/p&gt;
 
-&lt;p&gt;My idea is to create fast and experimental versions as scripts in IPython notebook and then gradually refactor and move new features to the project on the INCF repo.&lt;/p&gt;
+&lt;p&gt;My idea is to create hacky and experimental versions as scripts in IPython notebook and then gradually refactor and move new features to the project on the INCF repo.&lt;/p&gt;
 
 &lt;figure&gt;
 	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
-
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/&quot;&gt;Jeff Knupp: Open Sourcing a Python Project - the right way&lt;/a&gt;&lt;a href=&quot;#fnref:1&quot; rel=&quot;reference&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/&quot;&gt;Jeff Knupp: Open Sourcing a Python Project - the right way&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:2&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;http://pydanny.com/cookie-project-templates-made-easy.html&quot;&gt;Daniel Greenfield: Cookie project templates made easy&lt;/a&gt;&lt;a href=&quot;#fnref:2&quot; rel=&quot;reference&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;a href=&quot;http://pydanny.com/cookie-project-templates-made-easy.html&quot;&gt;Daniel Greenfield: Cookie project templates made easy&lt;/a&gt; &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
@@ -122,7 +191,7 @@ I followed these posts &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&
     <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;I am very happy to announce that my proposal&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; has been accepted by the members of INCF and I will work on Python Object Oriented Kernel Current Source Density Toolbox project during this summer.&lt;/p&gt;
+  <content type="html">&lt;p&gt;I am very happy to announce that my proposal&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; has been accepted by the members of INCF and I will work on Python Object Oriented Kernel Current Source Density Toolbox project during this summer.&lt;/p&gt;
 
 &lt;p&gt;The goal of the project is to implement the recently developed Kernel Current Source Density method using an open and scientist-friendly stack – Python, Numpy and Scipy. &lt;/p&gt;
 
@@ -134,7 +203,7 @@ I followed these posts &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;http://www.google-melange.com/gsoc/proposal/public/google/gsoc2014/grzegorz_parka/5629499534213120&quot;&gt;Link to the proposal and the timeline&lt;/a&gt;&lt;a href=&quot;#fnref:1&quot; rel=&quot;reference&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.google-melange.com/gsoc/proposal/public/google/gsoc2014/grzegorz_parka/5629499534213120&quot;&gt;Link to the proposal and the timeline&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;

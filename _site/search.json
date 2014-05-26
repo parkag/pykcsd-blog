@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Confusing definitions",
+		  "category"   : "articles",
+		  "url"        : "http://localhost:4000/articles/confusion/",
+		  "date"       : "2014-05-20 00:00:00 +0200",
+		  "shortdate"  : "May 20, 2014"
+		} ,
+	
+		{
 		  "title"      : "Community Bonding Period and preparation (Week -1)",
 		  "category"   : "articles",
 		  "url"        : "http://localhost:4000/articles/week-minus-1/",
