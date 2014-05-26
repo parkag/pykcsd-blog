@@ -29,16 +29,17 @@ $$ \rho_q = \lim_{V \rightarrow 0} \frac{Q}{V} \left[ \frac{C}{m^3}\right]$$
 
 which is a scalar.
 
-Current Source Density[^3] is more like charge density.
-
+Current Source Density[^3] has the meaning of 
 $$C(r,t) = \sum_{n=1}^N I_n(t)\delta ^3(r-r_n) \left[\frac{A}{m^3} \right]$$
 
 and
 
-$$\phi(r,t) = \frac{1}{4\pi \sigma} \iiint_V \frac{C(r', t)}{\left| r-r' \rbrace} d^3 r'$$
+$$\phi(r,t) = \frac{1}{4\pi \sigma} \iiint_V \frac{C(r', t)}{| r-r'|} d^3 r'$$
 
 # Kernel Density
-ok2
+This is about statistics.
+
+To be updated...
 
 [^1]: [Current density at wikipedia](http://en.wikipedia.org/wiki/Current_density)
 [^3]: [Current source density](http://www.csc.kth.se/~helinden/PettersenLindenDaleEinevoll-BookChapter-revised.pdf)
