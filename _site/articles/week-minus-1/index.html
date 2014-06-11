@@ -139,6 +139,16 @@ I followed these posts <sup id="fnref:1"><a href="#fn:1" class="footnote">1</a><
 
 <p>The first impression is that the template contains a bit too many text and config files (running tests, generating documentation, deploying to PyPI), but I believe that getting familliar with them will pay off in the next stages of the project.</p>
 
+<p>The template includes:</p>
+
+<ul>
+  <li>Makefile with commands for building, cleaning, testing, deploying</li>
+  <li>Travis-CI automatic testing configuration file</li>
+  <li>Makefile for building Sphinx-powered documentation</li>
+</ul>
+
+<p>Which is basically all that’s required to automate project workflow.</p>
+
 <h2 id="other-than-that">Other than that</h2>
 
 <p>Meanwhile I am also learning about <a href="http://scikit-learn.org/stable/modules/cross_validation.html">cross-validation</a> and the Scikit-learn package. I will try to use the existing cross-validation from Scikit-learn to find the regularization parameter for smoothing the data in kCSD. This is useful for determining and reducing the noise from the potential measurements.</p>

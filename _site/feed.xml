@@ -4,13 +4,125 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000/" />
-<updated>2014-05-26T17:30:36+02:00</updated>
+<updated>2014-06-11T04:27:39+02:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Grzegorz Parka</name>
   <uri>http://localhost:4000/</uri>
   <email>grzegorz.parka@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Coding period - One dimensional kCSD (week 3)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week3/"/>
+  <id>http://localhost:4000/articles/week3</id>
+  <updated>2014-06-05T00:00:00-00:00</updated>
+  <published>2014-06-05T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;During this week I am finishing the kCSD implementation that works with data from 1D measurements.&lt;/p&gt;
+
+&lt;p&gt;Some thoughts from the last days:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;I thought there were some problems with cross validation in 1D pykCSD because it was returning high regularization parameters &lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt; for model data, where it should return very low values. My mentor, Daniel, suggested that my model sources or potentials could be wrong. And yeah&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, it turned out that I was calculating the initial potentials incorrectly.
+The correct relation in 1D is:&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt; \phi(z) = \frac{1}{2 \sigma} \int  \sqrt{(z-z_0)^2 + R^2 } - \lvert z-z_0 \rvert)C(z) dz&lt;/script&gt;
+
+    &lt;p&gt;This is done assuming cylindrical symmetry &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+H(x,y) = \begin{cases}
+                                     1, &amp; \text{if } x^2 + y^2 \leq R^2\\
+                                     0, &amp; \text{ otherwise}
+                                 \end{cases} 
+  %]]&gt;&lt;/script&gt; &lt;/p&gt;
+
+    &lt;p&gt;and &lt;script type=&quot;math/tex&quot;&gt;C(z)&lt;/script&gt; is the measured CSD&lt;/p&gt;
+
+    &lt;figure&gt;
+     &lt;a href=&quot;http://localhost:4000/images/pykcsd1D_cylinder.jpg&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/pykcsd1D_cylinder.jpg&quot; /&gt;&lt;/a&gt;
+ &lt;/figure&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;What is the added value so far? &lt;/p&gt;
+
+    &lt;p&gt;More generalized scheme for cross validation. The existing script used something like randomized Leave One Out cross validation (which, to confuse me, was commented and called as a KFold cross validation). My &lt;a href=&quot;http://nbviewer.ipython.org/github/parkag/notebooks/blob/master/pykCSD/pykCSD%20refactored.ipynb&quot;&gt;current version&lt;/a&gt; is able to accept any combination of indices (LeaveOneOut, KFold, ShuffleSplit and so on) which can be obtained with the use of index generators from the  Scikit-learn cross_validation module.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Already looking more deeply into 2D kCSD code, it turns out that 1D and 2D implementations have more in common than I originally thought. If I recognized it properly, only the basis function management changes among the different method dimensionalities. Everything else is based on kernel operations which look all the same both in 1D and 2D.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;I think everything Daniel told me so far turned out to be true and helpful :P &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week3/&quot;&gt;Coding period - One dimensional kCSD (week 3)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 05, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Coding period - One dimensional kCSD (week 2)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week2/"/>
+  <id>http://localhost:4000/articles/week2</id>
+  <updated>2014-05-29T00:00:00-00:00</updated>
+  <published>2014-05-29T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;During this week I am working on the kCSD implementation that works with data from measurements made by electrodes organized in lines.&lt;/p&gt;
+
+&lt;p&gt;Meanwhile I would like to tell what I learnt about regularization and cross validation in the context of regression.
+This is summed up in &lt;a href=&quot;http://nbviewer.ipython.org/github/parkag/notebooks/blob/master/pykCSD/RLS%20and%20cross%20validation.ipynb&quot;&gt;this notebook&lt;/a&gt;. This is a nice introduction to machine learning :)&lt;/p&gt;
+
+&lt;p&gt;I am still writing the pykCSD in Ipython notebook and my current progress can be tracked &lt;a href=&quot;http://nbviewer.ipython.org/github/parkag/notebooks/blob/master/pykCSD/pykCSD%20refactored.ipynb&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week2/&quot;&gt;Coding period - One dimensional kCSD (week 2)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 29, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Coding period starts (week 1)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week1/"/>
+  <id>http://localhost:4000/articles/week1</id>
+  <updated>2014-05-22T00:00:00-00:00</updated>
+  <published>2014-05-22T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;We are now in the begining of the coding period. I will use this week to create the common interface for accessing the kCSD solvers for different dimensionality. It is a kind of stub that will be useful later and will help to create a clean and consistent interface.&lt;/p&gt;
+
+&lt;p&gt;This doesn’t take whole week and leaves some time for more challenging activities, such as exploring the kCSD method deeper.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week1/&quot;&gt;Coding period starts (week 1)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 22, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -35,35 +147,37 @@
 &lt;p&gt;The pykCSD project requires good knowledge of linear algebra, calculus, statistics and (bio)electromagnetism. Trying to fully understand the Kernel Current Source Density method I found few misleading definitions more or less connected with the topic. I would like to keep them here for the future reference.&lt;/p&gt;
 
 &lt;h1 id=&quot;currentchargecurrent-source-density&quot;&gt;(Current/Charge/Current Source) Density&lt;/h1&gt;
-&lt;p&gt;Current Density&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;script type=&quot;math/tex&quot;&gt;\vec{J}&lt;/script&gt; is the electric current &lt;script type=&quot;math/tex&quot;&gt;\Delta I&lt;/script&gt; (moving charge) per unit area S &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Current Density&lt;/strong&gt; &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;script type=&quot;math/tex&quot;&gt;\vec{J}&lt;/script&gt; is the electric current &lt;script type=&quot;math/tex&quot;&gt;\Delta I&lt;/script&gt; (moving charge) per unit area S &lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\vec{J} = \lim_{S \rightarrow 0} \frac{\Delta I(S) \widehat{a}_{max}}{S} \left[ \frac{A}{m^2}\right], \text{ where } \Delta I = \lim_{\Delta t \rightarrow 0}\frac{\Delta Q}{\Delta t}&lt;/script&gt;
 
 &lt;p&gt;which is a vector.&lt;/p&gt;
 
-&lt;p&gt;Charge Density is electric charge per unit volume (or area or line)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Charge Density&lt;/strong&gt; is electric charge per unit volume (or area or line)&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt; \rho_q = \lim_{V \rightarrow 0} \frac{Q}{V} \left[ \frac{C}{m^3}\right]&lt;/script&gt;
 
 &lt;p&gt;which is a scalar.&lt;/p&gt;
 
-&lt;p&gt;Current Source Density&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; is more like charge density.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Current Source Density&lt;/strong&gt; &lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; has the meaning of volume density of current entering or leaving the medium at some point in space.&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;C(r,t) = \sum_{n=1}^N I_n(t)\delta ^3(r-r_n) \left[\frac{A}{m^3} \right]&lt;/script&gt;
 
 &lt;p&gt;and&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;$$\phi(r,t) = \frac{1}{4\pi \sigma} \iiint_V \frac{C(r’, t)}{\left&lt;/td&gt;
-      &lt;td&gt;r-r’ \rbrace} d^3 r’$$&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; \phi(r, t) = \frac{1}{4 \pi \sigma} \iiint \frac{ C(r', t) }{  \lvert r-r' \rvert } d^3 r' &lt;/script&gt;
 
 &lt;h1 id=&quot;kernel-density&quot;&gt;Kernel Density&lt;/h1&gt;
-&lt;p&gt;ok2&lt;/p&gt;
+&lt;p&gt;This is about statistics.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://www.mathworks.com/help/stats/kernel-distribution.html&lt;/li&gt;
+  &lt;li&gt;http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/AV0405/MISHRA/kde.html&lt;/li&gt;
+  &lt;li&gt;http://scikit-learn.org/stable/modules/density.html&lt;/li&gt;
+  &lt;li&gt;http://en.wikipedia.org/wiki/Kernel_density_estimation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To be updated…&lt;/p&gt;
 
 &lt;figure&gt;
 	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
@@ -101,6 +215,16 @@
 I followed these posts &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; to start the project using current best practices. This includes reusing audreyr’s cookiecutter and &lt;em&gt;pypackage&lt;/em&gt; template.&lt;/p&gt;
 
 &lt;p&gt;The first impression is that the template contains a bit too many text and config files (running tests, generating documentation, deploying to PyPI), but I believe that getting familliar with them will pay off in the next stages of the project.&lt;/p&gt;
+
+&lt;p&gt;The template includes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Makefile with commands for building, cleaning, testing, deploying&lt;/li&gt;
+  &lt;li&gt;Travis-CI automatic testing configuration file&lt;/li&gt;
+  &lt;li&gt;Makefile for building Sphinx-powered documentation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Which is basically all that’s required to automate project workflow.&lt;/p&gt;
 
 &lt;h2 id=&quot;other-than-that&quot;&gt;Other than that&lt;/h2&gt;
 

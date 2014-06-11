@@ -5,25 +5,25 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Confusing definitions &#8211; pykCSD @ GSoC</title>
-<meta name="description" content="Confusing and misleading definitions">
-<meta name="keywords" content="definitions, explanation">
+<title>Coding period - One dimensional kCSD (week 3) &#8211; pykCSD @ GSoC</title>
+<meta name="description" content="Implementing kCSD 1D">
+<meta name="keywords" content="coding">
 
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Confusing definitions">
-<meta property="og:description" content="Confusing and misleading definitions">
-<meta property="og:url" content="http://localhost:4000/articles/confusion/">
+<meta property="og:title" content="Coding period - One dimensional kCSD (week 3)">
+<meta property="og:description" content="Implementing kCSD 1D">
+<meta property="og:url" content="http://localhost:4000/articles/week3/">
 <meta property="og:site_name" content="pykCSD @ GSoC">
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/articles/confusion/">
+<link rel="canonical" href="http://localhost:4000/articles/week3/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="pykCSD @ GSoC Feed">
 
 
@@ -110,69 +110,61 @@
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <span class="entry-tags"><a href="http://localhost:4000/tags/#definitions" title="Pages tagged definitions">definitions</a>&nbsp;&bull;&nbsp;<a href="http://localhost:4000/tags/#explanation" title="Pages tagged explanation">explanation</a></span>
+        <span class="entry-tags"><a href="http://localhost:4000/tags/#coding" title="Pages tagged coding">coding</a></span>
         
-          <h1 class="entry-title">Confusing definitions</h1>
+          <h1 class="entry-title">Coding period - One dimensional kCSD (week 3)</h1>
         
       </header>
       <footer class="entry-meta">
         <img src="http://localhost:4000/images/profi_photo.jpg" alt="Grzegorz Parka photo" class="author-photo">
         <span class="author vcard">By <span class="fn"><a href="http://localhost:4000/about/" title="About Grzegorz Parka">Grzegorz Parka</a></span></span>
-        <span class="entry-date date published"><time datetime="2014-05-20T00:00:00+02:00"><i class="icon-calendar-empty"></i> May 20, 2014</time></span>
-        <span class="entry-date date modified"><time datetime="2014-05-21"><i class="icon-pencil"></i> May 21, 2014</time></span>
+        <span class="entry-date date published"><time datetime="2014-06-05T00:00:00+02:00"><i class="icon-calendar-empty"></i> June 05, 2014</time></span>
+        <span class="entry-date date modified"><time datetime="2014-06-05"><i class="icon-pencil"></i> June 05, 2014</time></span>
         <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a></span>
-        <span><a href="http://localhost:4000/articles/confusion/" rel="bookmark" title="Confusing definitions"><i class="icon-link"></i> Permalink</a></span>
+        <span><a href="http://localhost:4000/articles/week3/" rel="bookmark" title="Coding period - One dimensional kCSD (week 3)"><i class="icon-link"></i> Permalink</a></span>
         
         <span class="social-share-facebook">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/confusion/" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/week3/" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
         <span class="social-share-twitter">
-            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Confusing definitions&url=http://localhost:4000/articles/confusion/&via=" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
+            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Coding period - One dimensional kCSD (week 3)&url=http://localhost:4000/articles/week3/&via=" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
         <span class="social-share-googleplus">
-            <a href="https://plus.google.com/share?url=http://localhost:4000/articles/confusion/" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/articles/week3/" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
             <!-- /.social-share -->
       </footer>
       <div class="entry-content">
-        <p><strong>Definitions</strong></p>
+        <p>During this week I am finishing the kCSD implementation that works with data from 1D measurements.</p>
 
-<ul>
-  <li><a href="#currentchargecurrent-source-density">(Current/Charge/Current Source) Density</a></li>
-  <li><a href="#kernel-density">Kernel Density</a></li>
-</ul>
+<p>Some thoughts from the last days:</p>
 
-<p>The pykCSD project requires good knowledge of linear algebra, calculus, statistics and (bio)electromagnetism. Trying to fully understand the Kernel Current Source Density method I found few misleading definitions more or less connected with the topic. I would like to keep them here for the future reference.</p>
+<ol>
+  <li>
+    <p>I thought there were some problems with cross validation in 1D pykCSD because it was returning high regularization parameters <script type="math/tex">\lambda</script> for model data, where it should return very low values. My mentor, Daniel, suggested that my model sources or potentials could be wrong. And yeah<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, it turned out that I was calculating the initial potentials incorrectly.
+The correct relation in 1D is:</p>
 
-<h1 id="currentchargecurrent-source-density">(Current/Charge/Current Source) Density</h1>
-<p><strong>Current Density</strong> <sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> <script type="math/tex">\vec{J}</script> is the electric current <script type="math/tex">\Delta I</script> (moving charge) per unit area S </p>
+    <script type="math/tex; mode=display"> \phi(z) = \frac{1}{2 \sigma} \int  \sqrt{(z-z_0)^2 + R^2 } - \lvert z-z_0 \rvert)C(z) dz</script>
 
-<script type="math/tex; mode=display">\vec{J} = \lim_{S \rightarrow 0} \frac{\Delta I(S) \widehat{a}_{max}}{S} \left[ \frac{A}{m^2}\right], \text{ where } \Delta I = \lim_{\Delta t \rightarrow 0}\frac{\Delta Q}{\Delta t}</script>
+    <p>This is done assuming cylindrical symmetry <script type="math/tex">% <![CDATA[
+H(x,y) = \begin{cases}
+                                     1, & \text{if } x^2 + y^2 \leq R^2\\
+                                     0, & \text{ otherwise}
+                                 \end{cases} 
+  %]]></script> </p>
 
-<p>which is a vector.</p>
+    <p>and <script type="math/tex">C(z)</script> is the measured CSD</p>
 
-<p><strong>Charge Density</strong> is electric charge per unit volume (or area or line)</p>
+    <figure>
+     <a href="http://localhost:4000/images/pykcsd1D_cylinder.jpg"><img src="http://localhost:4000/images/pykcsd1D_cylinder.jpg" /></a>
+ </figure>
+  </li>
+  <li>
+    <p>What is the added value so far? </p>
 
-<script type="math/tex; mode=display"> \rho_q = \lim_{V \rightarrow 0} \frac{Q}{V} \left[ \frac{C}{m^3}\right]</script>
-
-<p>which is a scalar.</p>
-
-<p><strong>Current Source Density</strong> <sup id="fnref:3"><a href="#fn:3" class="footnote">2</a></sup> has the meaning of volume density of current entering or leaving the medium at some point in space.</p>
-
-<script type="math/tex; mode=display">C(r,t) = \sum_{n=1}^N I_n(t)\delta ^3(r-r_n) \left[\frac{A}{m^3} \right]</script>
-
-<p>and</p>
-
-<script type="math/tex; mode=display"> \phi(r, t) = \frac{1}{4 \pi \sigma} \iiint \frac{ C(r', t) }{  \lvert r-r' \rvert } d^3 r' </script>
-
-<h1 id="kernel-density">Kernel Density</h1>
-<p>This is about statistics.</p>
-
-<ul>
-  <li>http://www.mathworks.com/help/stats/kernel-distribution.html</li>
-  <li>http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/AV0405/MISHRA/kde.html</li>
-  <li>http://scikit-learn.org/stable/modules/density.html</li>
-  <li>http://en.wikipedia.org/wiki/Kernel_density_estimation</li>
-</ul>
-
-<p>To be updated…</p>
+    <p>More generalized scheme for cross validation. The existing script used something like randomized Leave One Out cross validation (which, to confuse me, was commented and called as a KFold cross validation). My <a href="http://nbviewer.ipython.org/github/parkag/notebooks/blob/master/pykCSD/pykCSD%20refactored.ipynb">current version</a> is able to accept any combination of indices (LeaveOneOut, KFold, ShuffleSplit and so on) which can be obtained with the use of index generators from the  Scikit-learn cross_validation module.</p>
+  </li>
+  <li>
+    <p>Already looking more deeply into 2D kCSD code, it turns out that 1D and 2D implementations have more in common than I originally thought. If I recognized it properly, only the basis function management changes among the different method dimensionalities. Everything else is based on kernel operations which look all the same both in 1D and 2D.</p>
+  </li>
+</ol>
 
 <figure>
 	<img src="http://localhost:4000/images/gsoc_horizontal.jpg" width="100%" />
@@ -180,10 +172,7 @@
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p><a href="http://en.wikipedia.org/wiki/Current_density">Current density at wikipedia</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p><a href="http://www.csc.kth.se/~helinden/PettersenLindenDaleEinevoll-BookChapter-revised.pdf">Current source density</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>I think everything Daniel told me so far turned out to be true and helpful :P <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -193,10 +182,8 @@
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://localhost:4000/articles/week-minus-1/" class="btn" title="Community Bonding Period and preparation (Week -1)">Previous article</a>
+        <a href="http://localhost:4000/articles/week2/" class="btn" title="Coding period - One dimensional kCSD (week 2)">Previous article</a>
       
-      
-        <a href="http://localhost:4000/articles/week1/" class="btn" title="Coding period starts (week 1)">Next article</a>
       
     </nav><!-- /.pagination -->
   </article>
