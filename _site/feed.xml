@@ -4,7 +4,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000/" />
-<updated>2014-06-11T04:27:39+02:00</updated>
+<updated>2014-07-01T02:23:40+02:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Grzegorz Parka</name>
@@ -14,7 +14,192 @@
 
 
 <entry>
-  <title type="html"><![CDATA[Coding period - One dimensional kCSD (week 3)]]></title>
+  <title type="html"><![CDATA[Handling delays, midterm evaluation, next step (week 6)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week6/"/>
+  <id>http://localhost:4000/articles/week6</id>
+  <updated>2014-06-27T00:00:00-00:00</updated>
+  <published>2014-06-26T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;I had to pass my exams as quickly as possible and so did I.
+I am two days in my examination period and I am already done!&lt;/p&gt;
+
+&lt;h3 id=&quot;kcsd2d&quot;&gt;KCSD2D&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;The two dimensional variant of KCSD works.
+A sample reconstruction looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;In [1]: from pykCSD.pykCSD import KCSD
+In [2]: import numpy as np
+In [3]: elec_pos = np.array([[0, 0], [0, 1], [1,0], [1,1], [0.5,0.5]])
+In [4]: pots = np.array([0,0,0,0,1])
+In [5]: k = KCSD(elec_pos, pots, params={'x_min': -2, 'x_max': 2, 'y_min':-2, 'y_max':2})
+In [6]: k.estimate_pots()
+In [7]: k.estimate_csd()
+In [8]: k.plot_all()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/kcsd2d_reconstruction.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/kcsd2d_reconstruction.png&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;Sample reconstruction&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The current limitations are similar as in the KCSD1D case (no time recordings reconstruction and whole data in RAM) which will be worked upon.&lt;/p&gt;
+
+&lt;h3 id=&quot;midterm-evaluation&quot;&gt;Midterm evaluation&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;The first part of Google Summer of Code passed so rapidly I barely noticed the midterm evaluation! Passed! :)&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hi Grzegorz Parka,&lt;/p&gt;
+
+  &lt;p&gt;We have processed the evaluation for your project named Object Oriented Python Kernel Current Source Density toolbox with International Neuroinformatics Coordinating Facility.&lt;/p&gt;
+
+  &lt;p&gt;Congratulations, from our data it seems that you have successfully passed the Google Summer of Code 2014 - Midterm Evaluation. Please contact your mentor to discuss the results of your evaluation and to plan your goals and development plan for the rest of the program&lt;/p&gt;
+
+  &lt;p&gt;Greetings,
+The Google Open Source Programs Team&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Actually I’m on the right track following the schedule from my proposal.&lt;/p&gt;
+
+&lt;h3 id=&quot;bonus-from-google-and-acm&quot;&gt;Bonus from Google and ACM&lt;/h3&gt;
+&lt;p&gt;There is an additional surprise for us, GSoC students :)&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hi GSoC 2014 students,&lt;/p&gt;
+
+  &lt;p&gt;The ACM has offered to give you all ACM Student Memberships with
+Digital Library access (which is the benefits of student membership
+plus access to the ACM Digital Library, an electronic subscription to
+both CACM and XRDS) this year. We will be issuing these memberships to
+you starting 14 July. You will receive an email directly from the ACM
+confirming your membership then.&lt;/p&gt;
+
+  &lt;p&gt;(…)&lt;/p&gt;
+
+  &lt;p&gt;Thanks,
+Carol&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is like one of the most useful gifts I’ve been given in years! I love reading scientific articles! :D&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week6/&quot;&gt;Handling delays, midterm evaluation, next step (week 6)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 26, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Two dimensional kCSD (week 5)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week5/"/>
+  <id>http://localhost:4000/articles/week5</id>
+  <updated>2014-06-19T00:00:00-00:00</updated>
+  <published>2014-06-19T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;During this week I am still working on KCSD2D and passing exams at the Uni.&lt;/p&gt;
+
+&lt;p&gt;There was a funny problem, which took me a while to find, different type casting in Matlab and Python:&lt;/p&gt;
+
+&lt;p&gt;Python:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;np.uint16(0.1)
+&amp;gt;&amp;gt; 0
+np.uint16(0.6)
+&amp;gt;&amp;gt; 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Matlab:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;uint16(0.1)
+&amp;gt;&amp;gt; 0
+uint16(0.6)
+&amp;gt;&amp;gt; 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This means that &lt;code&gt;uint16(x)&lt;/code&gt; from Matlab may be translated to Python as &lt;code&gt;np.uint16(round(x))&lt;/code&gt; obviously. It took me a while to find it out though.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week5/&quot;&gt;Two dimensional kCSD (week 5)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 19, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Two dimensional kCSD (week 4)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week4/"/>
+  <id>http://localhost:4000/articles/week4</id>
+  <updated>2014-06-12T00:00:00-00:00</updated>
+  <published>2014-06-12T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;kcsd-1d&quot;&gt;KCSD 1D&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;The basic version of 1D KCSD is in repo and works, however it still can be improved significantly. The current limitations are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the results are not compatible enough with the previous version (I will aim for difference &amp;lt;.1%)&lt;/li&gt;
+  &lt;li&gt;lack of support for time dependent recordings&lt;/li&gt;
+  &lt;li&gt;lack of automated choice of optimal basis function width&lt;/li&gt;
+  &lt;li&gt;currently whole data is kept in RAM (this might be insufficient for very large datasets)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I will be eliminating the limitations and adding features gradually as I go along. 
+This will be connected with unifying the interfaces of 1D, 2D, 3D KCSD.&lt;/p&gt;
+
+&lt;h2 id=&quot;kcsd-2d&quot;&gt;KCSD 2D&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;The next two weeks are pretty intensive for me as I must to finish my university assignments and pass the examination period.
+However I will do my best and put as much time as possible into the project.&lt;/p&gt;
+
+&lt;p&gt;The next two or three weeks will be spent on developing two dimensional version of the KCSD method (KCSD2D). It assumes that data is collected with planar electrodes.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/pykcsd2D_plane.jpg&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/pykcsd2D_plane.jpg&quot; /&gt;&lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;This time we need to model our potentials in one missing dimension and reconstruct sources in two dimensions.
+The relation between potentials and CSD in two dimensional case is:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; \phi(x,y) = \frac{1}{2\pi\sigma} \int dx' \int dy' \text{arsinh}\left( \frac{2h}{\sqrt{(x-x')^2 + (y-y')^2}} \right) C(x',y')&lt;/script&gt;
+
+&lt;p&gt;assuming symmetry &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+H(z) = \begin{cases}
+										1, &amp; \text{if } -h \leq z \leq h\\
+										0, &amp; \text{ otherwise}
+									\end{cases}  %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;There is a bit more juggling about distributing the sources properly.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week4/&quot;&gt;Two dimensional kCSD (week 4)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 12, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[One dimensional kCSD (week 3)]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week3/"/>
   <id>http://localhost:4000/articles/week3</id>
   <updated>2014-06-05T00:00:00-00:00</updated>
@@ -25,13 +210,13 @@
     <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;During this week I am finishing the kCSD implementation that works with data from 1D measurements.&lt;/p&gt;
+  <content type="html">&lt;p&gt;During this week I am finishing the kCSD implementation that works with data from 1D measurements, moving the code to the main repository and writing tests.&lt;/p&gt;
 
 &lt;p&gt;Some thoughts from the last days:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
-    &lt;p&gt;I thought there were some problems with cross validation in 1D pykCSD because it was returning high regularization parameters &lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt; for model data, where it should return very low values. My mentor, Daniel, suggested that my model sources or potentials could be wrong. And yeah&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, it turned out that I was calculating the initial potentials incorrectly.
+    &lt;p&gt;I thought there were some problems with cross validation in 1D pykCSD because it was returning high regularization parameters &lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt; for model data, where it should return very low values. My mentor, Daniel, suggested that my model sources or potentials could be wrong. And yeah&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, it turned out that I was indeed calculating the initial potentials incorrectly.
 The correct relation in 1D is:&lt;/p&gt;
 
     &lt;script type=&quot;math/tex; mode=display&quot;&gt; \phi(z) = \frac{1}{2 \sigma} \int  \sqrt{(z-z_0)^2 + R^2 } - \lvert z-z_0 \rvert)C(z) dz&lt;/script&gt;
@@ -70,12 +255,12 @@ H(x,y) = \begin{cases}
   &lt;/ol&gt;
 &lt;/div&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week3/&quot;&gt;Coding period - One dimensional kCSD (week 3)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 05, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week3/&quot;&gt;One dimensional kCSD (week 3)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 05, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
-  <title type="html"><![CDATA[Coding period - One dimensional kCSD (week 2)]]></title>
+  <title type="html"><![CDATA[One dimensional kCSD (week 2)]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week2/"/>
   <id>http://localhost:4000/articles/week2</id>
   <updated>2014-05-29T00:00:00-00:00</updated>
@@ -91,13 +276,13 @@ H(x,y) = \begin{cases}
 &lt;p&gt;Meanwhile I would like to tell what I learnt about regularization and cross validation in the context of regression.
 This is summed up in &lt;a href=&quot;http://nbviewer.ipython.org/github/parkag/notebooks/blob/master/pykCSD/RLS%20and%20cross%20validation.ipynb&quot;&gt;this notebook&lt;/a&gt;. This is a nice introduction to machine learning :)&lt;/p&gt;
 
-&lt;p&gt;I am still writing the pykCSD in Ipython notebook and my current progress can be tracked &lt;a href=&quot;http://nbviewer.ipython.org/github/parkag/notebooks/blob/master/pykCSD/pykCSD%20refactored.ipynb&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I am still writing the pykCSD in IPython notebook and my current progress can be tracked &lt;a href=&quot;http://nbviewer.ipython.org/github/parkag/notebooks/blob/master/pykCSD/pykCSD%20refactored.ipynb&quot;&gt;here&lt;/a&gt;. This version will soon become obsolete as it will be reorganized and moved to the proper python source files in INCF/pykCSD repo.&lt;/p&gt;
 
 &lt;figure&gt;
 	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week2/&quot;&gt;Coding period - One dimensional kCSD (week 2)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 29, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week2/&quot;&gt;One dimensional kCSD (week 2)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 29, 2014.&lt;/p&gt;</content>
 </entry>
 
 

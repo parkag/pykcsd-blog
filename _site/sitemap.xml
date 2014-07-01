@@ -44,6 +44,18 @@
 
     
     <url>
+        <loc>http://localhost:4000/articles/week6/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/articles/week5/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/articles/week4/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/articles/week3/</loc>
     </url>
     
