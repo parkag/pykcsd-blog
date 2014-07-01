@@ -4,7 +4,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000/" />
-<updated>2014-07-01T02:23:40+02:00</updated>
+<updated>2014-07-01T02:56:08+02:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Grzegorz Parka</name>
@@ -87,6 +87,16 @@ Carol&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;This is like one of the most useful gifts I’ve been given in years! I love reading scientific articles! :D&lt;/p&gt;
+
+&lt;h3 id=&quot;next-step&quot;&gt;Next step&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;Now when I have the 1D and 2D cases working, it’s time to implement the 3D case. This time no dimension is missing so the relation between sources and potentials becomes simply:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; \phi(x,y,z) = \frac{1}{4 \pi \sigma}\iiint \frac{dx' dy' dz' C(x',y',z')}{\sqrt{(x-x')^2+(y-y')^2+(z-z')^2}} &lt;/script&gt;
+
+&lt;p&gt;The size of basis source matrices may now become an issue. We will find out soon!&lt;/p&gt;
+
+&lt;p&gt;Also expect some 3D plots soon!&lt;/p&gt;
 
 &lt;figure&gt;
 	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
