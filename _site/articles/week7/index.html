@@ -1,0 +1,472 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Three dimensional kCSD (week 7) &#8211; pykCSD @ GSoC</title>
+<meta name="description" content="KCSD3D">
+<meta name="keywords" content="coding">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Three dimensional kCSD (week 7)">
+<meta property="og:description" content="KCSD3D">
+<meta property="og:url" content="http://localhost:4000/articles/week7/">
+<meta property="og:site_name" content="pykCSD @ GSoC">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/articles/week7/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="pykCSD @ GSoC Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://localhost:4000/about/">About</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://localhost:4000/articles/">Articles</a>
+				 
+			</li>
+	        
+	        <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Search...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://localhost:4000/" class="site-logo" rel="home" title="pykCSD @ GSoC"><img src="http://localhost:4000/images/site-logo.png" width="200" height="200" alt="pykCSD @ GSoC logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://localhost:4000/">pykCSD @ GSoC</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">A journey through Python implementation of Kernel Current Source Density Method</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:4000/tags/#coding" title="Pages tagged coding">coding</a></span>
+        
+          <h1 class="entry-title">Three dimensional kCSD (week 7)</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <img src="http://localhost:4000/images/profi_photo.jpg" alt="Grzegorz Parka photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://localhost:4000/about/" title="About Grzegorz Parka">Grzegorz Parka</a></span></span>
+        <span class="entry-date date published"><time datetime="2014-07-03T00:00:00+02:00"><i class="icon-calendar-empty"></i> July 03, 2014</time></span>
+        <span class="entry-date date modified"><time datetime="2014-07-06"><i class="icon-pencil"></i> July 06, 2014</time></span>
+        <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a></span>
+        <span><a href="http://localhost:4000/articles/week7/" rel="bookmark" title="Three dimensional kCSD (week 7)"><i class="icon-link"></i> Permalink</a></span>
+        
+        <span class="social-share-facebook">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/week7/" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
+        <span class="social-share-twitter">
+            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Three dimensional kCSD (week 7)&url=http://localhost:4000/articles/week7/&via=" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
+        <span class="social-share-googleplus">
+            <a href="https://plus.google.com/share?url=http://localhost:4000/articles/week7/" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
+            <!-- /.social-share -->
+      </footer>
+      <div class="entry-content">
+        <h3 id="tldr---basic-version-of-kcsd3d-works-kcsd3d-imagesplotting">TL;DR: - basic version of KCSD3D works, <a href="#plotting">KCSD3D images</a></h3>
+
+<p>During the implementation of the 3D version of kCSD, there were few things to consider:</p>
+
+<h3 id="distribution-of-sources-in-2d-and-3d">Distribution of sources in 2D and 3D</h3>
+<p>Problem: having approx <script type="math/tex">n_{src}</script> sources we need to distribute them evenly in 3D space.</p>
+
+<p>The approach proposed for two dimensions in kCSD 2D seems a bit unclear for me:</p>
+
+<pre><code>def get_src_params_2D(Lx, Ly, n_src):   
+	coeff = [Ly, Lx - Ly, -Lx * n_src];
+
+	rts = np.roots(coeff)
+	r = [r for r in rts if type(r) is not complex and r &gt; 0]
+
+	nx = r[0]
+	ny = n_src/nx
+
+	ds = Lx/(nx-1)
+
+	nx = np.floor(nx) + 1
+	ny = np.floor(ny) + 1
+
+	Lx_n = (nx - 1) * ds
+	Ly_n = (ny - 1) * ds
+
+	return (nx, ny, Lx_n, Ly_n, ds)
+</code></pre>
+
+<p>which for enables to distribute sources like this:</p>
+
+<figure>
+	<a href="http://localhost:4000/images/src2d_roots.png"><img src="http://localhost:4000/images/src2d_roots.png" /></a>
+	<figcaption>old approach using roots</figcaption>
+</figure>
+
+<p>with such parameters:</p>
+
+<pre><code>(nx=6.0, ny=4.0, Lx_n=3.8359071790069814, Ly_n=2.301544307404189, ds=0.76718143580139631)
+</code></pre>
+
+<p>I have no idea how to extend this into higher dimension.</p>
+
+<p><strong>My attempt</strong> is like this:</p>
+
+<pre><code>def get_src_params_2D_new(Lx, Ly, n_src):
+	S = Lx*Ly
+	S_unit = float(S)/n_src
+	nx = np.ceil(Lx*S_unit**(-1./2))
+	ny = np.ceil(Ly*S_unit**(-1./2))
+
+	ds = Lx/nx
+
+	Lx_n = (nx)*ds
+	Ly_n = (ny)*ds
+
+	return (nx, ny, Lx_n, Ly_n, ds)
+</code></pre>
+
+<p>for the same input as in the previous approach it gives slightly different results:</p>
+
+<pre><code>(nx=6.0, ny=4.0, Lx_n=3.2000000000000002, Ly_n=2.1333333333333333, ds=0.53333333333333333)
+</code></pre>
+
+<figure>
+	<a href="http://localhost:4000/images/src2d_area.png"><img src="http://localhost:4000/images/src2d_area.png" /></a>
+	<figcaption>new approach using hyper-volume (length/area/volume ...)</figcaption>
+</figure>
+
+<p>This scales well from 2D to 3D (and further), since it’s based on the conception of (hyper)volume.</p>
+
+<figure>
+	<a href="http://localhost:4000/images/src3d_volume.png"><img src="http://localhost:4000/images/src3d_volume.png" /></a>
+</figure>
+
+<h3 id="potential">Potential</h3>
+<p>The potential is obviously just:</p>
+
+<script type="math/tex; mode=display"> \phi(x,y,z) = \frac{1}{4 \pi \sigma} \iiint \frac{C(x',y',z') dx' dy' dz'}{\sqrt{(x-x')+(y-y')+(z-z')}}</script>
+
+<p>and <script type="math/tex">C(x,y,z)</script> may be for example a 3D step function:
+ <script type="math/tex">% <![CDATA[
+C(x,y,z) = \begin{cases}
+										1, & \text{if }x^2+y^2+z^2 < R^2 \\
+										0, & \text{ otherwise}
+									\end{cases}  %]]></script></p>
+
+<p>which can be imagined as a sphere of uniform density.</p>
+
+<p>or gaussian function:</p>
+
+<script type="math/tex; mode=display">C(x,y,z) = \exp \left(-\frac{(x - \mu_x)^2 + (y - \mu_y)^2 + (z - \mu_z)^2}{2\sigma ^2} \right) </script>
+
+<p>which can be imagined as a sphere getting denser and denser near its core. </p>
+
+<script type="math/tex; mode=display"></script>
+
+<h3 id="memory-issues">Memory issues</h3>
+<p>The main matrices used in the kCSD method may become large enough to use whole RAM, let’s investigate them:</p>
+
+<ul>
+  <li>dist_table - O(1), typically 100x1
+    <ul>
+      <li>this is small and memory-safe</li>
+    </ul>
+  </li>
+  <li>b_pot_matrix - <script type="math/tex">O(n_{src} \cdot n_{elec})</script> 
+    <ul>
+      <li>grows fast with number of sources and number of electrodes</li>
+      <li>we can suppose this is safe while <script type="math/tex">% <![CDATA[
+n_{elec} < 1000 %]]></script>, <script type="math/tex">% <![CDATA[
+n_{src} < 1000 %]]></script> (rarely violated)</li>
+    </ul>
+  </li>
+  <li>b_interp_pot_matrix - <script type="math/tex">O(n_{voxels} \cdot n_{src})</script>
+    <ul>
+      <li>size grows rapidly with output sampling quality and number of sources </li>
+      <li>safe as long as the number of voxels (volume units) <script type="math/tex">% <![CDATA[
+n_{voxels} < 1000000 %]]></script> (100x100x100) which may not be met for more detailed reconstructions</li>
+    </ul>
+  </li>
+  <li>b_src_matrix - <script type="math/tex">O(n_{voxels} \cdot n_{src})</script>
+    <ul>
+      <li>as in b_interp_pot_matrix</li>
+      <li>size could be reduced if the basis functions are axis-symmetric, but not in general.</li>
+    </ul>
+  </li>
+  <li>estimated_pots, estimated_csd - <script type="math/tex">O(n_{voxels} \cdot n_{timeframe})</script> 
+    <ul>
+      <li>size grows rapidly with output sampling quality and number of time records.</li>
+      <li>with more than few timeframes, these matrices are impossible to hold in RAM and must be stored on HDD</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="plotting">Plotting</h3>
+<p>There are few possibilites to visualize 3D data obtained from KCSD.</p>
+
+<h4 id="matplotlib">Matplotlib</h4>
+<p>Matplotlib is designed to visualize 2D data and its 3D features are very limited.
+We can only visualize electrode positions in 3D as a cloud of points. Potentials and CSD can be presented as slices through chosen axes.</p>
+
+<figure>
+	<a href="http://localhost:4000/images/kcsd3d_mpl.png"><img src="http://localhost:4000/images/kcsd3d_mpl.png" /></a>
+</figure>
+
+<h4 id="mayavi">Mayavi</h4>
+<p>Using mayavi, there are more possibilities:</p>
+
+<p>Plane cuts:</p>
+
+<pre><code>pots = k.estimated_pots
+mlab.pipeline.image_plane_widget(mlab.pipeline.scalar_field(pots),
+				plane_orientation='x_axes',
+				slice_index=10,
+				)
+mlab.pipeline.image_plane_widget(mlab.pipeline.scalar_field(pots),
+				plane_orientation='y_axes',
+				slice_index=10,
+				)
+mlab.outline()
+</code></pre>
+
+<figure>
+	<a href="http://localhost:4000/images/kcsd3d_1.png"><img src="http://localhost:4000/images/kcsd3d_1.png" /></a>
+	<figcaption>Looks fine, the planes can be adjusted interactively.</figcaption>
+</figure>
+
+<p>Volumetric plot:</p>
+
+<pre><code>mlab.pipeline.volume(mlab.pipeline.scalar_field(pots))
+mlab.outline()
+</code></pre>
+
+<figure>
+	<a href="http://localhost:4000/images/volumetric1.png"><img src="http://localhost:4000/images/volumetric1.png" /></a>
+	<figcaption>May be a bit unclear with all the data displayed.</figcaption>
+</figure>
+
+<pre><code>mlab.pipeline.volume(mlab.pipeline.scalar_field(pots), 
+			vmin=pots.min()+0.2*pots.ptp(), 
+			vmax=pots.max()-0.2*pots.ptp())
+mlab.outline()
+</code></pre>
+
+<figure>
+	<a href="http://localhost:4000/images/volumetric2.png"><img src="http://localhost:4000/images/volumetric2.png" /></a>
+	<figcaption>It may be convenient to display only lower 20 and upper 20 percentiles of the data</figcaption>
+</figure>
+
+<p>Combined iso-surface and plane cut</p>
+
+<pre><code>s_pots = mlab.pipeline.scalar_field(pots)
+mlab.pipeline.iso_surface(s_pots, contours=[pots.min()+0.1*pots.ptp(), ], opacity=0.1)
+mlab.pipeline.iso_surface(s_pots, contours=[pots.max()-0.1*pots.ptp(), ],)
+mlab.pipeline.image_plane_widget(s_pots,
+				plane_orientation='z_axes',
+				slice_index=10,
+				)
+mlab.outline()
+</code></pre>
+
+<figure>
+	<a href="http://localhost:4000/images/combined.png"><img src="http://localhost:4000/images/combined.png" /></a>
+	<figcaption>Combined approach</figcaption>
+</figure>
+
+<p>PS. to avoid freezes in mayavi.mlab 3D visualizer a proper gui should be used:</p>
+
+<pre><code>%gui wx
+</code></pre>
+
+<h4 id="external-plotter---paraview">External plotter - Paraview</h4>
+<p>Paraview is a library built for data analysis and visualization.</p>
+
+<h3 id="whats-next">What’s next?</h3>
+<p>Now that the basic versions of KCSD in 1D, 2D, 3D are implemented, there are few things to manage:</p>
+
+<ul>
+  <li>Refactoring
+    <ul>
+      <li>improving readability</li>
+      <li>reducing code redundancy - each KCSD class is based on the same template. It would be nice to merge them, but only if the code stays readable. </li>
+      <li>static functions will be moved to appropriate modules (say: source_templates, source_management, model_potential, cross_validation)</li>
+    </ul>
+  </li>
+  <li>managing big datasets - some matrices should be read from HDD and not kept in RAM all the time
+    <ul>
+      <li>check np.memmap and hdf5 data format</li>
+    </ul>
+  </li>
+  <li>investigate how much speedup can be achieved
+    <ul>
+      <li>especially: fix the n-dimensional integrals (numpy warns they don’t converge fast enough)</li>
+    </ul>
+  </li>
+  <li>more tests, better documentation</li>
+</ul>
+
+<p>After managing this, the package will be ready to be deployed.</p>
+
+<figure>
+	<img src="http://localhost:4000/images/gsoc_horizontal.jpg" width="100%" />
+</figure>
+
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:4000/articles/week6/" class="btn" title="Handling delays, midterm evaluation, next step (week 6)">Previous article</a>
+      
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2014 Grzegorz Parka. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	
+	<a href="http://facebook.com/grzegorz.parka" title="Grzegorz Parka on Facebook" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+	
+	<a href="http://linkedin.com/in/parkag" title="Grzegorz Parka on LinkedIn" target="_blank"><i class="icon-linkedin icon-2x"></i></a>
+	
+	
+	
+	<a href="http://github.com/parkag" title="Grzegorz Parka on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : 'http://localhost:4000/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'parkaggithubiopykcsdblog'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>	        
+
+</body>
+</html>

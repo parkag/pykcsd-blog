@@ -4,13 +4,274 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000/" />
-<updated>2014-07-01T02:56:08+02:00</updated>
+<updated>2014-07-06T17:22:16+02:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Grzegorz Parka</name>
   <uri>http://localhost:4000/</uri>
   <email>grzegorz.parka@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Three dimensional kCSD (week 7)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week7/"/>
+  <id>http://localhost:4000/articles/week7</id>
+  <updated>2014-07-06T00:00:00-00:00</updated>
+  <published>2014-07-03T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;h3 id=&quot;tldr---basic-version-of-kcsd3d-works-kcsd3d-imagesplotting&quot;&gt;TL;DR: - basic version of KCSD3D works, &lt;a href=&quot;#plotting&quot;&gt;KCSD3D images&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;During the implementation of the 3D version of kCSD, there were few things to consider:&lt;/p&gt;
+
+&lt;h3 id=&quot;distribution-of-sources-in-2d-and-3d&quot;&gt;Distribution of sources in 2D and 3D&lt;/h3&gt;
+&lt;p&gt;Problem: having approx &lt;script type=&quot;math/tex&quot;&gt;n_{src}&lt;/script&gt; sources we need to distribute them evenly in 3D space.&lt;/p&gt;
+
+&lt;p&gt;The approach proposed for two dimensions in kCSD 2D seems a bit unclear for me:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def get_src_params_2D(Lx, Ly, n_src):   
+	coeff = [Ly, Lx - Ly, -Lx * n_src];
+
+	rts = np.roots(coeff)
+	r = [r for r in rts if type(r) is not complex and r &amp;gt; 0]
+
+	nx = r[0]
+	ny = n_src/nx
+
+	ds = Lx/(nx-1)
+
+	nx = np.floor(nx) + 1
+	ny = np.floor(ny) + 1
+
+	Lx_n = (nx - 1) * ds
+	Ly_n = (ny - 1) * ds
+
+	return (nx, ny, Lx_n, Ly_n, ds)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;which for enables to distribute sources like this:&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/src2d_roots.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/src2d_roots.png&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;old approach using roots&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;with such parameters:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(nx=6.0, ny=4.0, Lx_n=3.8359071790069814, Ly_n=2.301544307404189, ds=0.76718143580139631)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I have no idea how to extend this into higher dimension.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;My attempt&lt;/strong&gt; is like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def get_src_params_2D_new(Lx, Ly, n_src):
+	S = Lx*Ly
+	S_unit = float(S)/n_src
+	nx = np.ceil(Lx*S_unit**(-1./2))
+	ny = np.ceil(Ly*S_unit**(-1./2))
+
+	ds = Lx/nx
+
+	Lx_n = (nx)*ds
+	Ly_n = (ny)*ds
+
+	return (nx, ny, Lx_n, Ly_n, ds)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;for the same input as in the previous approach it gives slightly different results:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(nx=6.0, ny=4.0, Lx_n=3.2000000000000002, Ly_n=2.1333333333333333, ds=0.53333333333333333)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/src2d_area.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/src2d_area.png&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;new approach using hyper-volume (length/area/volume ...)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;This scales well from 2D to 3D (and further), since it’s based on the conception of (hyper)volume.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/src3d_volume.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/src3d_volume.png&quot; /&gt;&lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;potential&quot;&gt;Potential&lt;/h3&gt;
+&lt;p&gt;The potential is obviously just:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; \phi(x,y,z) = \frac{1}{4 \pi \sigma} \iiint \frac{C(x',y',z') dx' dy' dz'}{\sqrt{(x-x')+(y-y')+(z-z')}}&lt;/script&gt;
+
+&lt;p&gt;and &lt;script type=&quot;math/tex&quot;&gt;C(x,y,z)&lt;/script&gt; may be for example a 3D step function:
+ &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+C(x,y,z) = \begin{cases}
+										1, &amp; \text{if }x^2+y^2+z^2 &lt; R^2 \\
+										0, &amp; \text{ otherwise}
+									\end{cases}  %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;which can be imagined as a sphere of uniform density.&lt;/p&gt;
+
+&lt;p&gt;or gaussian function:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C(x,y,z) = \exp \left(-\frac{(x - \mu_x)^2 + (y - \mu_y)^2 + (z - \mu_z)^2}{2\sigma ^2} \right) &lt;/script&gt;
+
+&lt;p&gt;which can be imagined as a sphere getting denser and denser near its core. &lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;&lt;/script&gt;
+
+&lt;h3 id=&quot;memory-issues&quot;&gt;Memory issues&lt;/h3&gt;
+&lt;p&gt;The main matrices used in the kCSD method may become large enough to use whole RAM, let’s investigate them:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;dist_table - O(1), typically 100x1
+    &lt;ul&gt;
+      &lt;li&gt;this is small and memory-safe&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;b_pot_matrix - &lt;script type=&quot;math/tex&quot;&gt;O(n_{src} \cdot n_{elec})&lt;/script&gt; 
+    &lt;ul&gt;
+      &lt;li&gt;grows fast with number of sources and number of electrodes&lt;/li&gt;
+      &lt;li&gt;we can suppose this is safe while &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+n_{elec} &lt; 1000 %]]&gt;&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+n_{src} &lt; 1000 %]]&gt;&lt;/script&gt; (rarely violated)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;b_interp_pot_matrix - &lt;script type=&quot;math/tex&quot;&gt;O(n_{voxels} \cdot n_{src})&lt;/script&gt;
+    &lt;ul&gt;
+      &lt;li&gt;size grows rapidly with output sampling quality and number of sources &lt;/li&gt;
+      &lt;li&gt;safe as long as the number of voxels (volume units) &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+n_{voxels} &lt; 1000000 %]]&gt;&lt;/script&gt; (100x100x100) which may not be met for more detailed reconstructions&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;b_src_matrix - &lt;script type=&quot;math/tex&quot;&gt;O(n_{voxels} \cdot n_{src})&lt;/script&gt;
+    &lt;ul&gt;
+      &lt;li&gt;as in b_interp_pot_matrix&lt;/li&gt;
+      &lt;li&gt;size could be reduced if the basis functions are axis-symmetric, but not in general.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;estimated_pots, estimated_csd - &lt;script type=&quot;math/tex&quot;&gt;O(n_{voxels} \cdot n_{timeframe})&lt;/script&gt; 
+    &lt;ul&gt;
+      &lt;li&gt;size grows rapidly with output sampling quality and number of time records.&lt;/li&gt;
+      &lt;li&gt;with more than few timeframes, these matrices are impossible to hold in RAM and must be stored on HDD&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;plotting&quot;&gt;Plotting&lt;/h3&gt;
+&lt;p&gt;There are few possibilites to visualize 3D data obtained from KCSD.&lt;/p&gt;
+
+&lt;h4 id=&quot;matplotlib&quot;&gt;Matplotlib&lt;/h4&gt;
+&lt;p&gt;Matplotlib is designed to visualize 2D data and its 3D features are very limited.
+We can only visualize electrode positions in 3D as a cloud of points. Potentials and CSD can be presented as slices through chosen axes.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/kcsd3d_mpl.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/kcsd3d_mpl.png&quot; /&gt;&lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;h4 id=&quot;mayavi&quot;&gt;Mayavi&lt;/h4&gt;
+&lt;p&gt;Using mayavi, there are more possibilities:&lt;/p&gt;
+
+&lt;p&gt;Plane cuts:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pots = k.estimated_pots
+mlab.pipeline.image_plane_widget(mlab.pipeline.scalar_field(pots),
+				plane_orientation='x_axes',
+				slice_index=10,
+				)
+mlab.pipeline.image_plane_widget(mlab.pipeline.scalar_field(pots),
+				plane_orientation='y_axes',
+				slice_index=10,
+				)
+mlab.outline()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/kcsd3d_1.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/kcsd3d_1.png&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;Looks fine, the planes can be adjusted interactively.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Volumetric plot:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mlab.pipeline.volume(mlab.pipeline.scalar_field(pots))
+mlab.outline()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/volumetric1.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/volumetric1.png&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;May be a bit unclear with all the data displayed.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;pre&gt;&lt;code&gt;mlab.pipeline.volume(mlab.pipeline.scalar_field(pots), 
+			vmin=pots.min()+0.2*pots.ptp(), 
+			vmax=pots.max()-0.2*pots.ptp())
+mlab.outline()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/volumetric2.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/volumetric2.png&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;It may be convenient to display only lower 20 and upper 20 percentiles of the data&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Combined iso-surface and plane cut&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;s_pots = mlab.pipeline.scalar_field(pots)
+mlab.pipeline.iso_surface(s_pots, contours=[pots.min()+0.1*pots.ptp(), ], opacity=0.1)
+mlab.pipeline.iso_surface(s_pots, contours=[pots.max()-0.1*pots.ptp(), ],)
+mlab.pipeline.image_plane_widget(s_pots,
+				plane_orientation='z_axes',
+				slice_index=10,
+				)
+mlab.outline()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/combined.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/combined.png&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;Combined approach&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;PS. to avoid freezes in mayavi.mlab 3D visualizer a proper gui should be used:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;%gui wx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;external-plotter---paraview&quot;&gt;External plotter - Paraview&lt;/h4&gt;
+&lt;p&gt;Paraview is a library built for data analysis and visualization.&lt;/p&gt;
+
+&lt;h3 id=&quot;whats-next&quot;&gt;What’s next?&lt;/h3&gt;
+&lt;p&gt;Now that the basic versions of KCSD in 1D, 2D, 3D are implemented, there are few things to manage:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Refactoring
+    &lt;ul&gt;
+      &lt;li&gt;improving readability&lt;/li&gt;
+      &lt;li&gt;reducing code redundancy - each KCSD class is based on the same template. It would be nice to merge them, but only if the code stays readable. &lt;/li&gt;
+      &lt;li&gt;static functions will be moved to appropriate modules (say: source_templates, source_management, model_potential, cross_validation)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;managing big datasets - some matrices should be read from HDD and not kept in RAM all the time
+    &lt;ul&gt;
+      &lt;li&gt;check np.memmap and hdf5 data format&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;investigate how much speedup can be achieved
+    &lt;ul&gt;
+      &lt;li&gt;especially: fix the n-dimensional integrals (numpy warns they don’t converge fast enough)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;more tests, better documentation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After managing this, the package will be ready to be deployed.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week7/&quot;&gt;Three dimensional kCSD (week 7)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 03, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -26,7 +287,7 @@
     <email>grzegorz.parka@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;I had to pass my exams as quickly as possible and so did I.
-I am two days in my examination period and I am already done!&lt;/p&gt;
+After two days of my examination period and I am already done!&lt;/p&gt;
 
 &lt;h3 id=&quot;kcsd2d&quot;&gt;KCSD2D&lt;/h3&gt;
 &lt;hr /&gt;
@@ -94,7 +355,7 @@ Carol&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt; \phi(x,y,z) = \frac{1}{4 \pi \sigma}\iiint \frac{dx' dy' dz' C(x',y',z')}{\sqrt{(x-x')^2+(y-y')^2+(z-z')^2}} &lt;/script&gt;
 
-&lt;p&gt;The size of basis source matrices may now become an issue. We will find out soon!&lt;/p&gt;
+&lt;p&gt;The size of basis matrices may now become an issue (the basis source matrix expected size is now in 100’s MBs). We will find out soon!&lt;/p&gt;
 
 &lt;p&gt;Also expect some 3D plots soon!&lt;/p&gt;
 
@@ -233,7 +494,7 @@ The correct relation in 1D is:&lt;/p&gt;
 
     &lt;p&gt;This is done assuming cylindrical symmetry &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
 H(x,y) = \begin{cases}
-                                     1, &amp; \text{if } x^2 + y^2 \leq R^2\\
+                                     1, &amp; \text{if } x^2 + y^2 \leq h^2\\
                                      0, &amp; \text{ otherwise}
                                  \end{cases} 
   %]]&gt;&lt;/script&gt; &lt;/p&gt;
