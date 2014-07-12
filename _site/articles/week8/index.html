@@ -5,25 +5,25 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Confusing definitions &#8211; pykCSD @ GSoC</title>
-<meta name="description" content="Confusing and misleading definitions">
-<meta name="keywords" content="definitions, explanation">
+<title>Refactoring, speeding up (week 8) &#8211; pykCSD @ GSoC</title>
+<meta name="description" content="KCSD3D">
+<meta name="keywords" content="coding">
 
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Confusing definitions">
-<meta property="og:description" content="Confusing and misleading definitions">
-<meta property="og:url" content="http://localhost:4000/articles/confusion/">
+<meta property="og:title" content="Refactoring, speeding up (week 8)">
+<meta property="og:description" content="KCSD3D">
+<meta property="og:url" content="http://localhost:4000/articles/week8/">
 <meta property="og:site_name" content="pykCSD @ GSoC">
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/articles/confusion/">
+<link rel="canonical" href="http://localhost:4000/articles/week8/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="pykCSD @ GSoC Feed">
 
 
@@ -110,91 +110,123 @@
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <span class="entry-tags"><a href="http://localhost:4000/tags/#definitions" title="Pages tagged definitions">definitions</a>&nbsp;&bull;&nbsp;<a href="http://localhost:4000/tags/#explanation" title="Pages tagged explanation">explanation</a></span>
+        <span class="entry-tags"><a href="http://localhost:4000/tags/#coding" title="Pages tagged coding">coding</a></span>
         
-          <h1 class="entry-title">Confusing definitions</h1>
+          <h1 class="entry-title">Refactoring, speeding up (week 8)</h1>
         
       </header>
       <footer class="entry-meta">
         <img src="http://localhost:4000/images/profi_photo.jpg" alt="Grzegorz Parka photo" class="author-photo">
         <span class="author vcard">By <span class="fn"><a href="http://localhost:4000/about/" title="About Grzegorz Parka">Grzegorz Parka</a></span></span>
-        <span class="entry-date date published"><time datetime="2014-05-20T00:00:00+02:00"><i class="icon-calendar-empty"></i> May 20, 2014</time></span>
-        <span class="entry-date date modified"><time datetime="2014-05-21"><i class="icon-pencil"></i> May 21, 2014</time></span>
+        <span class="entry-date date published"><time datetime="2014-07-10T00:00:00+02:00"><i class="icon-calendar-empty"></i> July 10, 2014</time></span>
+        <span class="entry-date date modified"><time datetime="2014-07-10"><i class="icon-pencil"></i> July 10, 2014</time></span>
         <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a></span>
-        <span><a href="http://localhost:4000/articles/confusion/" rel="bookmark" title="Confusing definitions"><i class="icon-link"></i> Permalink</a></span>
+        <span><a href="http://localhost:4000/articles/week8/" rel="bookmark" title="Refactoring, speeding up (week 8)"><i class="icon-link"></i> Permalink</a></span>
         
         <span class="social-share-facebook">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/confusion/" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/week8/" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
         <span class="social-share-twitter">
-            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Confusing definitions&url=http://localhost:4000/articles/confusion/&via=" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
+            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Refactoring, speeding up (week 8)&url=http://localhost:4000/articles/week8/&via=" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
         <span class="social-share-googleplus">
-            <a href="https://plus.google.com/share?url=http://localhost:4000/articles/confusion/" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/articles/week8/" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
             <!-- /.social-share -->
       </footer>
       <div class="entry-content">
-        <p><strong>Definitions</strong></p>
+        <h3 id="refactoring">Refactoring</h3>
+
+<p>Moving static functions from KCSD classes to external modules:</p>
 
 <ul>
-  <li><a href="#currentchargecurrent-source-density">(Current/Charge/Current Source) Density</a></li>
-  <li><a href="#kernel-density">Kernel Density</a></li>
+  <li>cross_validation.py</li>
+  <li>basis_functions.py</li>
+  <li>source_distributions.py</li>
+  <li>potentials.py</li>
+  <li>plotting_utils.py</li>
 </ul>
 
-<p>The pykCSD project requires good knowledge of linear algebra, calculus, statistics and (bio)electromagnetism. Trying to fully understand the Kernel Current Source Density method I found few misleading definitions more or less connected with the topic. I would like to keep them here for the future reference.</p>
+<p>The names are self-explanatory.</p>
 
-<h1 id="currentchargecurrent-source-density">(Current/Charge/Current Source) Density</h1>
-<p><strong>Current Density</strong> <sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> <script type="math/tex">\vec{J}</script> is the electric current <script type="math/tex">\Delta I</script> (moving charge) per unit area S </p>
+<p>The package is more granular now. It makes it much easier to stick to PEP8 rules.</p>
 
-<script type="math/tex; mode=display">\vec{J} = \lim_{S \rightarrow 0} \frac{\Delta I(S) \widehat{a}_{max}}{S} \left[ \frac{A}{m^2}\right], \text{ where } \Delta I = \lim_{\Delta t \rightarrow 0}\frac{\Delta Q}{\Delta t}</script>
+<p>It’s still not fully PEP8, but over ten times closer to that! (flaw count decreased from 500 to 40 by now)</p>
 
-<p>which is a vector.</p>
+<h3 id="speeding-up">Speeding up</h3>
 
-<p><strong>Charge Density</strong> is electric charge per unit volume (or area or line)</p>
+<h4 id="matrices">Matrices</h4>
+<p>The matrix operations already look optimized. Nothing special to improve. Contrary to what I supposed in my proposal, there are no sparse matrices in kCSD in general. Some may only appear in the 1D version, which I investigated at that time. </p>
 
-<script type="math/tex; mode=display"> \rho_q = \lim_{V \rightarrow 0} \frac{Q}{V} \left[ \frac{C}{m^3}\right]</script>
+<p>I’m leaving it as it is now. Messing with it will not bring a significant boost.</p>
 
-<p>which is a scalar.</p>
+<h4 id="integrals">Integrals</h4>
+<p>There were serious problems with evaluating double and triple quads, especially when the integrands contained step function.</p>
 
-<p><strong>Current Source Density</strong> <sup id="fnref:3"><a href="#fn:3" class="footnote">2</a></sup> has the meaning of volume density of current entering or leaving the medium at some point in space.</p>
+<p>This is because higher dimensional scipy integrals (nquad, tplquad) don’t handle discontinuities and constant functions well.
+Triple quads and nquads completely refused to compute potentials for 3D step functions.</p>
 
-<script type="math/tex; mode=display">C(r,t) = \sum_{n=1}^N I_n(t)\delta ^3(r-r_n) \left[\frac{A}{m^3} \right]</script>
+<p>To overcome this I decided to use other type of integration method - Monte Carlo method.</p>
 
-<p>and</p>
+<p>I decided to use Monte Carlo because it handles both gaussian and step function well. The calculation time vs precision tradeoff can be manipulated explicitly by specifing the number of sampling points. </p>
 
-<script type="math/tex; mode=display"> \phi(r, t) = \frac{1}{4 \pi \sigma} \iiint \frac{ C(r', t) }{  \lvert r-r' \rvert } d^3 r' </script>
+<p>Small comparison between Scipy tplquad and Monte Carlo integral:</p>
 
-<h1 id="kernel-density">Kernel Density</h1>
-<p>Despite its name, this is not directly related to the kCSD method.</p>
+<pre><code>In [1]: from pykCSD import potentials as pt
+In [2]: from pykCSD import basis_functions as bf
+In [3]: from pylab import *
+In [4]: x = np.array([0.2 * i for i in xrange(20)])
+In [5]: R = 1.0
+In [6]: h = 0.5
+In [7]: pots_tplquad = np.array([pt.b_pot_3d_cont(xp, R, h, 1.0, bf.gauss_rescale_3D) for xp in x])
+In [8]: pots_monte = np.array([pt.b_pot_3d_mc(xp, R, h, 1.0, bf.gauss_rescale_3D) for xp in x])
+In [9]: plot(x, pots_tplquad)
+In [10]: plot(x, pots_monte)
+In [11]: show()
+</code></pre>
 
-<ul>
-  <li>http://www.mathworks.com/help/stats/kernel-distribution.html</li>
-  <li>http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/AV0405/MISHRA/kde.html</li>
-  <li>http://scikit-learn.org/stable/modules/density.html</li>
-  <li>http://en.wikipedia.org/wiki/Kernel_density_estimation</li>
-</ul>
+<figure>
+	<a href="http://localhost:4000/images/figure_monte_tpl.png"><img src="http://localhost:4000/images/figure_monte_tpl.png" /></a>
+<figcaption>Potentials calculated with scipy.integrate.tplquad and Monte Carlo method (scikit-monaco)</figcaption>
+</figure>
+
+<figure>
+	<a href="http://localhost:4000/images/figure_mc_tpl_err_pots.png"><img src="http://localhost:4000/images/figure_mc_tpl_err_pots.png" /></a>
+<figcaption>Difference between tplquad and Monte Carlo method (npts=1e5) calculated potentials</figcaption>
+</figure>
+
+<figure>
+	<a href="http://localhost:4000/images/figure_mc_tpl_rel_err.png"><img src="http://localhost:4000/images/figure_mc_tpl_rel_err.png" /></a>
+<figcaption>Relative error between tplquad and Monte Carlo method (npts=1e5) calculated potentials</figcaption>
+</figure>
+
+<p>Relative error of Monte Carlo integration method is proportional to inverse square root of the number of samples N, err = <script type="math/tex">O
+\left(\frac{1}{\sqrt{N}}\right)</script> and is not dependent on the dimensionality of the integrand.</p>
+
+<p>Using 100000 pts gives average relative error below 1%, which should be low enough for most of reconstructions.</p>
+
+<p>Speed comparison for gausian base and 20 calculations:</p>
+
+<pre><code>%time pots_tplquad = np.array([pt.b_pot_3d_cont(xp, R, h, 1.0, bf.gauss_rescale_3D) for xp in x])
+CPU times: user 46.8 s, sys: 0 ns, total: 46.8 s
+Wall time: 46.9 s
+</code></pre>
+
+<p>This takes 46.9 s for SciPy tplquad to complete, now compare to Monte Carlo with 1e5 points:</p>
+
+<pre><code>%time pots_monte = np.array([pt.b_pot_3d_mc(xp, R, h, 1.0, bf.gauss_rescale_3D) for xp in x])
+CPU times: user 32 ms, sys: 172 ms, total: 204 ms
+Wall time: 19.8 s
+</code></pre>
 
 <figure>
 	<img src="http://localhost:4000/images/gsoc_horizontal.jpg" width="100%" />
 </figure>
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p><a href="http://en.wikipedia.org/wiki/Current_density">Current density at wikipedia</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p><a href="http://www.csc.kth.se/~helinden/PettersenLindenDaleEinevoll-BookChapter-revised.pdf">Current source density</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 
         <div id="disqus_thread"></div><!-- /#disqus_thread -->
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://localhost:4000/articles/week-minus-1/" class="btn" title="Community Bonding Period and preparation (Week -1)">Previous article</a>
+        <a href="http://localhost:4000/articles/week7/" class="btn" title="Three dimensional kCSD (week 7)">Previous article</a>
       
-      
-        <a href="http://localhost:4000/articles/week1/" class="btn" title="Coding period starts (week 1)">Next article</a>
       
     </nav><!-- /.pagination -->
   </article>

@@ -4,13 +4,117 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000/" />
-<updated>2014-07-06T17:22:16+02:00</updated>
+<updated>2014-07-11T15:08:27+02:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Grzegorz Parka</name>
   <uri>http://localhost:4000/</uri>
   <email>grzegorz.parka@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Refactoring, speeding up (week 8)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week8/"/>
+  <id>http://localhost:4000/articles/week8</id>
+  <updated>2014-07-10T00:00:00-00:00</updated>
+  <published>2014-07-10T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;h3 id=&quot;refactoring&quot;&gt;Refactoring&lt;/h3&gt;
+
+&lt;p&gt;Moving static functions from KCSD classes to external modules:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;cross_validation.py&lt;/li&gt;
+  &lt;li&gt;basis_functions.py&lt;/li&gt;
+  &lt;li&gt;source_distributions.py&lt;/li&gt;
+  &lt;li&gt;potentials.py&lt;/li&gt;
+  &lt;li&gt;plotting_utils.py&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The names are self-explanatory.&lt;/p&gt;
+
+&lt;p&gt;The package is more granular now. It makes it much easier to stick to PEP8 rules.&lt;/p&gt;
+
+&lt;p&gt;It’s still not fully PEP8, but over ten times closer to that! (flaw count decreased from 500 to 40 by now)&lt;/p&gt;
+
+&lt;h3 id=&quot;speeding-up&quot;&gt;Speeding up&lt;/h3&gt;
+
+&lt;h4 id=&quot;matrices&quot;&gt;Matrices&lt;/h4&gt;
+&lt;p&gt;The matrix operations already look optimized. Nothing special to improve. Contrary to what I supposed in my proposal, there are no sparse matrices in kCSD in general. Some may only appear in the 1D version, which I investigated at that time. &lt;/p&gt;
+
+&lt;p&gt;I’m leaving it as it is now. Messing with it will not bring a significant boost.&lt;/p&gt;
+
+&lt;h4 id=&quot;integrals&quot;&gt;Integrals&lt;/h4&gt;
+&lt;p&gt;There were serious problems with evaluating double and triple quads, especially when the integrands contained step function.&lt;/p&gt;
+
+&lt;p&gt;This is because higher dimensional scipy integrals (nquad, tplquad) don’t handle discontinuities and constant functions well.
+Triple quads and nquads completely refused to compute potentials for 3D step functions.&lt;/p&gt;
+
+&lt;p&gt;To overcome this I decided to use other type of integration method - Monte Carlo method.&lt;/p&gt;
+
+&lt;p&gt;I decided to use Monte Carlo because it handles both gaussian and step function well. The calculation time vs precision tradeoff can be manipulated explicitly by specifing the number of sampling points. &lt;/p&gt;
+
+&lt;p&gt;Small comparison between Scipy tplquad and Monte Carlo integral:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;In [1]: from pykCSD import potentials as pt
+In [2]: from pykCSD import basis_functions as bf
+In [3]: from pylab import *
+In [4]: x = np.array([0.2 * i for i in xrange(20)])
+In [5]: R = 1.0
+In [6]: h = 0.5
+In [7]: pots_tplquad = np.array([pt.b_pot_3d_cont(xp, R, h, 1.0, bf.gauss_rescale_3D) for xp in x])
+In [8]: pots_monte = np.array([pt.b_pot_3d_mc(xp, R, h, 1.0, bf.gauss_rescale_3D) for xp in x])
+In [9]: plot(x, pots_tplquad)
+In [10]: plot(x, pots_monte)
+In [11]: show()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/figure_monte_tpl.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/figure_monte_tpl.png&quot; /&gt;&lt;/a&gt;
+&lt;figcaption&gt;Potentials calculated with scipy.integrate.tplquad and Monte Carlo method (scikit-monaco)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/figure_mc_tpl_err_pots.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/figure_mc_tpl_err_pots.png&quot; /&gt;&lt;/a&gt;
+&lt;figcaption&gt;Difference between tplquad and Monte Carlo method (npts=1e5) calculated potentials&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/figure_mc_tpl_rel_err.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/figure_mc_tpl_rel_err.png&quot; /&gt;&lt;/a&gt;
+&lt;figcaption&gt;Relative error between tplquad and Monte Carlo method (npts=1e5) calculated potentials&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Relative error of Monte Carlo integration method is proportional to inverse square root of the number of samples N, err = &lt;script type=&quot;math/tex&quot;&gt;O
+\left(\frac{1}{\sqrt{N}}\right)&lt;/script&gt; and is not dependent on the dimensionality of the integrand.&lt;/p&gt;
+
+&lt;p&gt;Using 100000 pts gives average relative error below 1%, which should be low enough for most of reconstructions.&lt;/p&gt;
+
+&lt;p&gt;Speed comparison for gausian base and 20 calculations:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;%time pots_tplquad = np.array([pt.b_pot_3d_cont(xp, R, h, 1.0, bf.gauss_rescale_3D) for xp in x])
+CPU times: user 46.8 s, sys: 0 ns, total: 46.8 s
+Wall time: 46.9 s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This takes 46.9 s for SciPy tplquad to complete, now compare to Monte Carlo with 1e5 points:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;%time pots_monte = np.array([pt.b_pot_3d_mc(xp, R, h, 1.0, bf.gauss_rescale_3D) for xp in x])
+CPU times: user 32 ms, sys: 172 ms, total: 204 ms
+Wall time: 19.8 s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week8/&quot;&gt;Refactoring, speeding up (week 8)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 10, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -68,7 +172,13 @@
 
 &lt;p&gt;I have no idea how to extend this into higher dimension.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;My attempt&lt;/strong&gt; is like this:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;My approach&lt;/strong&gt; is to divide the area/volume into &lt;script type=&quot;math/tex&quot;&gt;n_{src}&lt;/script&gt; parts (squares/cubes) 
+and then calculate the side of each square and number of squares for each axis:&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/sources_3D.jpg&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/sources_3D.jpg&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;The new approach in 3D illustrated&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;pre&gt;&lt;code&gt;def get_src_params_2D_new(Lx, Ly, n_src):
 	S = Lx*Ly
@@ -98,6 +208,7 @@
 
 &lt;figure&gt;
 	&lt;a href=&quot;http://localhost:4000/images/src3d_volume.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/src3d_volume.png&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;A 3D example&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;h3 id=&quot;potential&quot;&gt;Potential&lt;/h3&gt;
@@ -119,6 +230,13 @@ C(x,y,z) = \begin{cases}
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;C(x,y,z) = \exp \left(-\frac{(x - \mu_x)^2 + (y - \mu_y)^2 + (z - \mu_z)^2}{2\sigma ^2} \right) &lt;/script&gt;
 
 &lt;p&gt;which can be imagined as a sphere getting denser and denser near its core. &lt;/p&gt;
+
+&lt;p&gt;Calculated at different distances, the function may look like this:&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/dist_table_3d.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/dist_table_3d.png&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;dist table for inverse laplacian assuming gaussian base&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;&lt;/script&gt;
 
@@ -238,7 +356,7 @@ mlab.outline()
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&quot;external-plotter---paraview&quot;&gt;External plotter - Paraview&lt;/h4&gt;
-&lt;p&gt;Paraview is a library built for data analysis and visualization.&lt;/p&gt;
+&lt;p&gt;Paraview is a library built for data analysis and visualization. It’s optimized to work with big datasets. Worth a try!&lt;/p&gt;
 
 &lt;h3 id=&quot;whats-next&quot;&gt;What’s next?&lt;/h3&gt;
 &lt;p&gt;Now that the basic versions of KCSD in 1D, 2D, 3D are implemented, there are few things to manage:&lt;/p&gt;
@@ -251,14 +369,15 @@ mlab.outline()
       &lt;li&gt;static functions will be moved to appropriate modules (say: source_templates, source_management, model_potential, cross_validation)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;managing big datasets - some matrices should be read from HDD and not kept in RAM all the time
+  &lt;li&gt;managing big datasets - some matrices should be read from HDD dynamically and not kept in RAM all the time
     &lt;ul&gt;
       &lt;li&gt;check np.memmap and hdf5 data format&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;investigate how much speedup can be achieved
     &lt;ul&gt;
-      &lt;li&gt;especially: fix the n-dimensional integrals (numpy warns they don’t converge fast enough)&lt;/li&gt;
+      &lt;li&gt;especially: fix the n-dimensional integrals (numpy warns they don’t converge fast enough), especially if we use step basis.&lt;/li&gt;
+      &lt;li&gt;investigate if Monte Carlo integration would be useful for triple integrals&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;more tests, better documentation&lt;/li&gt;
@@ -624,7 +743,7 @@ This is summed up in &lt;a href=&quot;http://nbviewer.ipython.org/github/parkag/
 &lt;script type=&quot;math/tex; mode=display&quot;&gt; \phi(r, t) = \frac{1}{4 \pi \sigma} \iiint \frac{ C(r', t) }{  \lvert r-r' \rvert } d^3 r' &lt;/script&gt;
 
 &lt;h1 id=&quot;kernel-density&quot;&gt;Kernel Density&lt;/h1&gt;
-&lt;p&gt;This is about statistics.&lt;/p&gt;
+&lt;p&gt;Despite its name, this is not directly related to the kCSD method.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;http://www.mathworks.com/help/stats/kernel-distribution.html&lt;/li&gt;
@@ -632,8 +751,6 @@ This is summed up in &lt;a href=&quot;http://nbviewer.ipython.org/github/parkag/
   &lt;li&gt;http://scikit-learn.org/stable/modules/density.html&lt;/li&gt;
   &lt;li&gt;http://en.wikipedia.org/wiki/Kernel_density_estimation&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;To be updated…&lt;/p&gt;
 
 &lt;figure&gt;
 	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;

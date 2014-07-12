@@ -175,7 +175,13 @@
 
 <p>I have no idea how to extend this into higher dimension.</p>
 
-<p><strong>My attempt</strong> is like this:</p>
+<p><strong>My approach</strong> is to divide the area/volume into <script type="math/tex">n_{src}</script> parts (squares/cubes) 
+and then calculate the side of each square and number of squares for each axis:</p>
+
+<figure>
+	<a href="http://localhost:4000/images/sources_3D.jpg"><img src="http://localhost:4000/images/sources_3D.jpg" /></a>
+	<figcaption>The new approach in 3D illustrated</figcaption>
+</figure>
 
 <pre><code>def get_src_params_2D_new(Lx, Ly, n_src):
 	S = Lx*Ly
@@ -205,6 +211,7 @@
 
 <figure>
 	<a href="http://localhost:4000/images/src3d_volume.png"><img src="http://localhost:4000/images/src3d_volume.png" /></a>
+	<figcaption>A 3D example</figcaption>
 </figure>
 
 <h3 id="potential">Potential</h3>
@@ -226,6 +233,13 @@ C(x,y,z) = \begin{cases}
 <script type="math/tex; mode=display">C(x,y,z) = \exp \left(-\frac{(x - \mu_x)^2 + (y - \mu_y)^2 + (z - \mu_z)^2}{2\sigma ^2} \right) </script>
 
 <p>which can be imagined as a sphere getting denser and denser near its core. </p>
+
+<p>Calculated at different distances, the function may look like this:</p>
+
+<figure>
+	<a href="http://localhost:4000/images/dist_table_3d.png"><img src="http://localhost:4000/images/dist_table_3d.png" /></a>
+	<figcaption>dist table for inverse laplacian assuming gaussian base</figcaption>
+</figure>
 
 <script type="math/tex; mode=display"></script>
 
@@ -345,7 +359,7 @@ mlab.outline()
 </code></pre>
 
 <h4 id="external-plotter---paraview">External plotter - Paraview</h4>
-<p>Paraview is a library built for data analysis and visualization.</p>
+<p>Paraview is a library built for data analysis and visualization. It’s optimized to work with big datasets. Worth a try!</p>
 
 <h3 id="whats-next">What’s next?</h3>
 <p>Now that the basic versions of KCSD in 1D, 2D, 3D are implemented, there are few things to manage:</p>
@@ -358,14 +372,15 @@ mlab.outline()
       <li>static functions will be moved to appropriate modules (say: source_templates, source_management, model_potential, cross_validation)</li>
     </ul>
   </li>
-  <li>managing big datasets - some matrices should be read from HDD and not kept in RAM all the time
+  <li>managing big datasets - some matrices should be read from HDD dynamically and not kept in RAM all the time
     <ul>
       <li>check np.memmap and hdf5 data format</li>
     </ul>
   </li>
   <li>investigate how much speedup can be achieved
     <ul>
-      <li>especially: fix the n-dimensional integrals (numpy warns they don’t converge fast enough)</li>
+      <li>especially: fix the n-dimensional integrals (numpy warns they don’t converge fast enough), especially if we use step basis.</li>
+      <li>investigate if Monte Carlo integration would be useful for triple integrals</li>
     </ul>
   </li>
   <li>more tests, better documentation</li>
@@ -384,6 +399,8 @@ mlab.outline()
       
         <a href="http://localhost:4000/articles/week6/" class="btn" title="Handling delays, midterm evaluation, next step (week 6)">Previous article</a>
       
+      
+        <a href="http://localhost:4000/articles/week8/" class="btn" title="Refactoring, speeding up (week 8)">Next article</a>
       
     </nav><!-- /.pagination -->
   </article>

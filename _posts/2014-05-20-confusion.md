@@ -38,15 +38,13 @@ and
  $$ \phi(r, t) = \frac{1}{4 \pi \sigma} \iiint \frac{ C(r', t) }{  \lvert r-r' \rvert } d^3 r' $$
 
 # Kernel Density
-This is about statistics.
+Despite its name, this is not directly related to the kCSD method.
 
 * http://www.mathworks.com/help/stats/kernel-distribution.html
 * http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/AV0405/MISHRA/kde.html
 * http://scikit-learn.org/stable/modules/density.html
 * http://en.wikipedia.org/wiki/Kernel_density_estimation
 
-
-To be updated...
 
 [^1]: [Current density at wikipedia](http://en.wikipedia.org/wiki/Current_density)
 [^3]: [Current source density](http://www.csc.kth.se/~helinden/PettersenLindenDaleEinevoll-BookChapter-revised.pdf)
