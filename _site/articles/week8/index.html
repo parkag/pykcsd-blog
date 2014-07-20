@@ -134,13 +134,14 @@
       <div class="entry-content">
         <h3 id="refactoring">Refactoring</h3>
 
-<p>Moving static functions from KCSD classes to external modules:</p>
+<p>To shorten and modularize the KCSD classes better, I’m moving static functions from KCSD classes to external modules:</p>
 
 <ul>
   <li>cross_validation.py</li>
   <li>basis_functions.py</li>
   <li>source_distributions.py</li>
   <li>potentials.py</li>
+  <li>dist_table_utils.py</li>
   <li>plotting_utils.py</li>
 </ul>
 
@@ -149,6 +150,8 @@
 <p>The package is more granular now. It makes it much easier to stick to PEP8 rules.</p>
 
 <p>It’s still not fully PEP8, but over ten times closer to that! (flaw count decreased from 500 to 40 by now)</p>
+
+<p>There is some similar code in the KCSD classes so, it could be beneficial to merge them together, however I didn’t find a good way of doing so yet. </p>
 
 <h3 id="speeding-up">Speeding up</h3>
 
@@ -161,11 +164,11 @@
 <p>There were serious problems with evaluating double and triple quads, especially when the integrands contained step function.</p>
 
 <p>This is because higher dimensional scipy integrals (nquad, tplquad) don’t handle discontinuities and constant functions well.
-Triple quads and nquads completely refused to compute potentials for 3D step functions.</p>
+Triple quads and nquads completely refused to compute potentials with 3D step basis functions.</p>
 
 <p>To overcome this I decided to use other type of integration method - Monte Carlo method.</p>
 
-<p>I decided to use Monte Carlo because it handles both gaussian and step function well. The calculation time vs precision tradeoff can be manipulated explicitly by specifing the number of sampling points. </p>
+<p>I came up with Monte Carlo mthod because it handles both gaussian and step function well. Also the calculation time vs precision tradeoff can be manipulated explicitly by specifing the number of sampling points. </p>
 
 <p>Small comparison between Scipy tplquad and Monte Carlo integral:</p>
 
@@ -227,6 +230,8 @@ Wall time: 19.8 s
       
         <a href="http://localhost:4000/articles/week7/" class="btn" title="Three dimensional kCSD (week 7)">Previous article</a>
       
+      
+        <a href="http://localhost:4000/articles/week9/" class="btn" title="Refactoring continued (week 9)">Next article</a>
       
     </nav><!-- /.pagination -->
   </article>

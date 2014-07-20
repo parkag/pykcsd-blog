@@ -1,6 +1,22 @@
 [
 	
 		{
+		  "title"      : "Ensuring quality (week 10)",
+		  "category"   : "articles",
+		  "url"        : "http://localhost:4000/articles/week10/",
+		  "date"       : "2014-07-24 00:00:00 +0200",
+		  "shortdate"  : "July 24, 2014"
+		} ,
+	
+		{
+		  "title"      : "Refactoring continued (week 9)",
+		  "category"   : "articles",
+		  "url"        : "http://localhost:4000/articles/week9/",
+		  "date"       : "2014-07-17 00:00:00 +0200",
+		  "shortdate"  : "July 17, 2014"
+		} ,
+	
+		{
 		  "title"      : "Refactoring, speeding up (week 8)",
 		  "category"   : "articles",
 		  "url"        : "http://localhost:4000/articles/week8/",

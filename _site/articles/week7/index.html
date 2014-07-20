@@ -139,7 +139,7 @@
 <h3 id="distribution-of-sources-in-2d-and-3d">Distribution of sources in 2D and 3D</h3>
 <p>Problem: having approx <script type="math/tex">n_{src}</script> sources we need to distribute them evenly in 3D space.</p>
 
-<p>The approach proposed for two dimensions in kCSD 2D seems a bit unclear for me:</p>
+<p>The approach proposed for two dimensions in kCSD 2D seems a bit unclear to me:</p>
 
 <pre><code>def get_src_params_2D(Lx, Ly, n_src):   
 	coeff = [Ly, Lx - Ly, -Lx * n_src];
@@ -207,7 +207,7 @@ and then calculate the side of each square and number of squares for each axis:<
 	<figcaption>new approach using hyper-volume (length/area/volume ...)</figcaption>
 </figure>
 
-<p>This scales well from 2D to 3D (and further), since it’s based on the conception of (hyper)volume.</p>
+<p>This scales well from 2D to 3D (and beyond), since it’s based on the conception of (hyper)volume.</p>
 
 <figure>
 	<a href="http://localhost:4000/images/src3d_volume.png"><img src="http://localhost:4000/images/src3d_volume.png" /></a>

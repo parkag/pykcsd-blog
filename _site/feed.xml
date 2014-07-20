@@ -4,13 +4,88 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000/" />
-<updated>2014-07-11T15:08:27+02:00</updated>
+<updated>2014-07-20T23:14:58+02:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Grzegorz Parka</name>
   <uri>http://localhost:4000/</uri>
   <email>grzegorz.parka@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Ensuring quality (week 10)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week10/"/>
+  <id>http://localhost:4000/articles/week10</id>
+  <updated>2014-07-24T00:00:00-00:00</updated>
+  <published>2014-07-24T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;h3 id=&quot;new-functionality&quot;&gt;New functionality&lt;/h3&gt;
+
+&lt;h4 id=&quot;analytic-relation-between-lfp-and-csd&quot;&gt;Analytic relation between LFP and CSD&lt;/h4&gt;
+&lt;p&gt;Daniel suggested that the package should offer a possibility to add a case in 3D kCSD, where it is possible to find an analytic solution of the relation between sources and potential.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week10/&quot;&gt;Ensuring quality (week 10)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 24, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Refactoring continued (week 9)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week9/"/>
+  <id>http://localhost:4000/articles/week9</id>
+  <updated>2014-07-17T00:00:00-00:00</updated>
+  <published>2014-07-17T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Until now I have been following the schedule pretty strictly, however it now came out that the performance of kCSD framework depends maily on Python underlying data structures. The double and triple integrals used in kCSD variants take up to 97% of overall computation time assuming reconstruction of only 1 frame.&lt;/p&gt;
+
+&lt;p&gt;I believe this is essential to maintaining general purpose of the library. There is another, analytical way to calcualte the potential in 3D, which Daniel pointed out. This will be added as an option to use.&lt;/p&gt;
+
+&lt;p&gt;Also this week Daniel told me to write a set of functions to compare model data and reconstructions.&lt;/p&gt;
+
+&lt;h3 id=&quot;refactoring&quot;&gt;Refactoring&lt;/h3&gt;
+
+&lt;p&gt;The library is already very modular, however there is still an obvious near-duplicacy of code in 1D, 2D and 3D KCSD. I intentionally made the classes as similar as possible, to make the merging easier. My idea now is to split KCSD execution into two steps:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;initializing model&lt;/li&gt;
+  &lt;li&gt;calculating CSD and LFP with the use of the model and measured LFP data&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Actually each model will stay a separate class. This is because merging all three variants into one model would create unnecesary cascades of conditional statements and will assign to much responsibility to a single class.&lt;/p&gt;
+
+&lt;p&gt;What helped me in the process was a quite complete set of unit and functional tests I’ve prepared over the course of the last weeks.&lt;/p&gt;
+
+&lt;h3 id=&quot;dropping-tests-that-compare-pykcsd-against-matlab-kcsd2d-version&quot;&gt;Dropping tests that compare pykCSD against Matlab kCSD2D version&lt;/h3&gt;
+
+&lt;p&gt;During the tests of creating sources in the 2D case I found out an inconsistency. &lt;/p&gt;
+
+&lt;h3 id=&quot;documentation&quot;&gt;Documentation&lt;/h3&gt;
+&lt;p&gt;The documentation has been improved. I decided to follow the docstring conventions from Numpy for the functions that are directly available to the user.&lt;/p&gt;
+
+&lt;p&gt;I used sphinx-napoleon extension to Sphinx to parse the Numpy style docstrings to rst.&lt;/p&gt;
+
+&lt;p&gt;The documentation is now hosted on readthedocs.org site: &lt;a href=&quot;http://pykcsd.readthedocs.org/en/latest/&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week9/&quot;&gt;Refactoring continued (week 9)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 17, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -27,13 +102,14 @@
   </author>
   <content type="html">&lt;h3 id=&quot;refactoring&quot;&gt;Refactoring&lt;/h3&gt;
 
-&lt;p&gt;Moving static functions from KCSD classes to external modules:&lt;/p&gt;
+&lt;p&gt;To shorten and modularize the KCSD classes better, I’m moving static functions from KCSD classes to external modules:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;cross_validation.py&lt;/li&gt;
   &lt;li&gt;basis_functions.py&lt;/li&gt;
   &lt;li&gt;source_distributions.py&lt;/li&gt;
   &lt;li&gt;potentials.py&lt;/li&gt;
+  &lt;li&gt;dist_table_utils.py&lt;/li&gt;
   &lt;li&gt;plotting_utils.py&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -42,6 +118,8 @@
 &lt;p&gt;The package is more granular now. It makes it much easier to stick to PEP8 rules.&lt;/p&gt;
 
 &lt;p&gt;It’s still not fully PEP8, but over ten times closer to that! (flaw count decreased from 500 to 40 by now)&lt;/p&gt;
+
+&lt;p&gt;There is some similar code in the KCSD classes so, it could be beneficial to merge them together, however I didn’t find a good way of doing so yet. &lt;/p&gt;
 
 &lt;h3 id=&quot;speeding-up&quot;&gt;Speeding up&lt;/h3&gt;
 
@@ -54,11 +132,11 @@
 &lt;p&gt;There were serious problems with evaluating double and triple quads, especially when the integrands contained step function.&lt;/p&gt;
 
 &lt;p&gt;This is because higher dimensional scipy integrals (nquad, tplquad) don’t handle discontinuities and constant functions well.
-Triple quads and nquads completely refused to compute potentials for 3D step functions.&lt;/p&gt;
+Triple quads and nquads completely refused to compute potentials with 3D step basis functions.&lt;/p&gt;
 
 &lt;p&gt;To overcome this I decided to use other type of integration method - Monte Carlo method.&lt;/p&gt;
 
-&lt;p&gt;I decided to use Monte Carlo because it handles both gaussian and step function well. The calculation time vs precision tradeoff can be manipulated explicitly by specifing the number of sampling points. &lt;/p&gt;
+&lt;p&gt;I came up with Monte Carlo mthod because it handles both gaussian and step function well. Also the calculation time vs precision tradeoff can be manipulated explicitly by specifing the number of sampling points. &lt;/p&gt;
 
 &lt;p&gt;Small comparison between Scipy tplquad and Monte Carlo integral:&lt;/p&gt;
 
@@ -136,7 +214,7 @@ Wall time: 19.8 s
 &lt;h3 id=&quot;distribution-of-sources-in-2d-and-3d&quot;&gt;Distribution of sources in 2D and 3D&lt;/h3&gt;
 &lt;p&gt;Problem: having approx &lt;script type=&quot;math/tex&quot;&gt;n_{src}&lt;/script&gt; sources we need to distribute them evenly in 3D space.&lt;/p&gt;
 
-&lt;p&gt;The approach proposed for two dimensions in kCSD 2D seems a bit unclear for me:&lt;/p&gt;
+&lt;p&gt;The approach proposed for two dimensions in kCSD 2D seems a bit unclear to me:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def get_src_params_2D(Lx, Ly, n_src):   
 	coeff = [Ly, Lx - Ly, -Lx * n_src];
@@ -204,7 +282,7 @@ and then calculate the side of each square and number of squares for each axis:&
 	&lt;figcaption&gt;new approach using hyper-volume (length/area/volume ...)&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;This scales well from 2D to 3D (and further), since it’s based on the conception of (hyper)volume.&lt;/p&gt;
+&lt;p&gt;This scales well from 2D to 3D (and beyond), since it’s based on the conception of (hyper)volume.&lt;/p&gt;
 
 &lt;figure&gt;
 	&lt;a href=&quot;http://localhost:4000/images/src3d_volume.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/src3d_volume.png&quot; /&gt;&lt;/a&gt;
