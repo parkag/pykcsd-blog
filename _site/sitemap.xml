@@ -1,102 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://localhost:4000</loc>
+        <loc>/pykcsd-blog</loc>
     </url>
     
     
     <url>
-        <loc>http://localhost:4000/feed.xml</loc>
+        <loc>/pykcsd-blog/feed.xml</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/search.json</loc>
+        <loc>/pykcsd-blog/search.json</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/sitemap.xml</loc>
+        <loc>/pykcsd-blog/sitemap.xml</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/about/</loc>
+        <loc>/pykcsd-blog/about/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/index.html</loc>
+        <loc>/pykcsd-blog/index.html</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/tags/</loc>
+        <loc>/pykcsd-blog/tags/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/easter-eggs/</loc>
+        <loc>/pykcsd-blog/easter-eggs/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/</loc>
+        <loc>/pykcsd-blog/articles/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/404.html</loc>
+        <loc>/pykcsd-blog/404.html</loc>
     </url>
     
 
     
     <url>
-        <loc>http://localhost:4000/articles/week10/</loc>
+        <loc>/pykcsd-blog/articles/week10/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/week9/</loc>
+        <loc>/pykcsd-blog/articles/week9/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/week8/</loc>
+        <loc>/pykcsd-blog/articles/week8/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/week7/</loc>
+        <loc>/pykcsd-blog/articles/week7/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/week6/</loc>
+        <loc>/pykcsd-blog/articles/week6/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/week5/</loc>
+        <loc>/pykcsd-blog/articles/week5/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/week4/</loc>
+        <loc>/pykcsd-blog/articles/week4/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/week3/</loc>
+        <loc>/pykcsd-blog/articles/week3/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/week2/</loc>
+        <loc>/pykcsd-blog/articles/week2/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/week1/</loc>
+        <loc>/pykcsd-blog/articles/week1/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/confusion/</loc>
+        <loc>/pykcsd-blog/articles/confusion/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/week-minus-1/</loc>
+        <loc>/pykcsd-blog/articles/week-minus-1/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/week-minus-2/</loc>
+        <loc>/pykcsd-blog/articles/week-minus-2/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/articles/proposal/</loc>
+        <loc>/pykcsd-blog/articles/proposal/</loc>
     </url>
     
 </urlset>
