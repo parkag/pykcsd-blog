@@ -2,57 +2,102 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">pykCSD @ GSoC</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="/pykcsd-blog/feed.xml" />
-<link rel="alternate" type="text/html" href="/pykcsd-blog/" />
-<updated>2014-07-20T23:27:41+02:00</updated>
-<id>/pykcsd-blog/</id>
+<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
+<link rel="alternate" type="text/html" href="http://localhost:4000/" />
+<updated>2014-07-27T22:48:12+02:00</updated>
+<id>http://localhost:4000/</id>
 <author>
   <name>Grzegorz Parka</name>
-  <uri>/pykcsd-blog/</uri>
+  <uri>http://localhost:4000/</uri>
   <email>grzegorz.parka@gmail.com</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[Ensuring quality (week 10)]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/week10/"/>
-  <id>/pykcsd-blog/articles/week10</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week10/"/>
+  <id>http://localhost:4000/articles/week10</id>
   <updated>2014-07-24T00:00:00-00:00</updated>
   <published>2014-07-24T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
-  <content type="html">&lt;h3 id=&quot;new-functionality&quot;&gt;New functionality&lt;/h3&gt;
+  <content type="html">&lt;h3 id=&quot;code-reviewoverview&quot;&gt;Code review/overview&lt;/h3&gt;
+&lt;p&gt;This week me, Daniel and one of his PhD students, Chaitanya met at Nencki Institute of Experimental Biology and made a code review.
+We found few small flaws in the code, for example the new source distribution I introduced didn’t place the sources completely evenly.&lt;/p&gt;
+
+&lt;p&gt;We also discussed the 3D laplace equation for spherical-symmetric sources, using step-case. This alternative approach is about to be added to the 3D KCSD variant.&lt;/p&gt;
+
+&lt;h3 id=&quot;new-functionality&quot;&gt;New functionality&lt;/h3&gt;
 
 &lt;h4 id=&quot;analytic-relation-between-lfp-and-csd&quot;&gt;Analytic relation between LFP and CSD&lt;/h4&gt;
 &lt;p&gt;Daniel suggested that the package should offer a possibility to add a case in 3D kCSD, where it is possible to find an analytic solution of the relation between sources and potential.&lt;/p&gt;
 
+&lt;p&gt;He sent me a nice pdf with the idea explained. And the conculsion is that:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+
+V(r) = 
+\left \lbrace 
+\begin{array}{ll}
+\displaystyle \frac{C}{4 \pi \sigma r} &amp; \textrm{for} \,\, r &gt; R \\[1em]
+\displaystyle \frac{3 C}{8 \pi \sigma R^3}(R^2-r^2/3) &amp; \textrm{for} \,\,  r &lt; R  
+\end{array}
+\right .
+ %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;where C=1 is the total current, R is source radius, r is actual position and &lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt; is conductance.&lt;/p&gt;
+
+&lt;h3 id=&quot;tasks-before-the-evaluation&quot;&gt;Tasks before the evaluation&lt;/h3&gt;
+
+&lt;p&gt;We discussed a list of tasks that should be done before the final evaluation. It consists of:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;improving validation method in 2d/3d against model data&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;creating validation framework&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;recalculating normalization constants in basis functions&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;comparing images matlab/python visually (with provided data)&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;time series management&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;cross validation for R and h parameters at once&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;tests on bigger datasets: 100, 1000, 10k electrodes and time frames&lt;/li&gt;
+  &lt;li&gt;describing workflows&lt;/li&gt;
+  &lt;li&gt;package deployment&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/week10/&quot;&gt;Ensuring quality (week 10)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 24, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week10/&quot;&gt;Ensuring quality (week 10)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 24, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Refactoring continued (week 9)]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/week9/"/>
-  <id>/pykcsd-blog/articles/week9</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week9/"/>
+  <id>http://localhost:4000/articles/week9</id>
   <updated>2014-07-17T00:00:00-00:00</updated>
   <published>2014-07-17T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;Until now I have been following the schedule pretty strictly, however it now came out that the performance of kCSD framework depends maily on Python underlying data structures. The double and triple integrals used in kCSD variants take up to 97% of overall computation time assuming reconstruction of only 1 frame.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Until now I have been following the schedule pretty strictly, however it now came out that the performance of kCSD framework depends maily on Python underlying data structures, so there is not much room for algorithm/data structure optimization. Other than that, the double and triple integrals used in kCSD variants may take up to 97% of overall computation time assuming reconstruction of only 1 frame.&lt;/p&gt;
 
-&lt;p&gt;I believe this is essential to maintaining general purpose of the library. There is another, analytical way to calcualte the potential in 3D, which Daniel pointed out. This will be added as an option to use.&lt;/p&gt;
+&lt;p&gt;I believe this is essential to maintaining general purpose of the library. There is another, analytical way to calculate the potential in 3D, which Daniel pointed out. This will be added as an option to use.&lt;/p&gt;
 
 &lt;p&gt;Also this week Daniel told me to write a set of functions to compare model data and reconstructions.&lt;/p&gt;
 
@@ -67,12 +112,12 @@
 
 &lt;p&gt;Actually each model will stay a separate class. This is because merging all three variants into one model would create unnecesary cascades of conditional statements and will assign to much responsibility to a single class.&lt;/p&gt;
 
-&lt;h3 id=&quot;adding-more-tests&quot;&gt;Adding more tests&lt;/h3&gt;
+&lt;h3 id=&quot;adding-more-appropriate-tests&quot;&gt;Adding more appropriate tests&lt;/h3&gt;
 &lt;p&gt;To make the process of refactoring go smoothly, I’m filling any gaps in the set of unit and functional tests I’ve prepared over the course of the last weeks.&lt;/p&gt;
 
 &lt;h3 id=&quot;dropping-tests-that-compare-pykcsd-against-matlab-kcsd2d-version&quot;&gt;Dropping tests that compare pykCSD against Matlab kCSD2D version&lt;/h3&gt;
 
-&lt;p&gt;During the tests of creating sources in the 2D case I found out an inconsistency. So that old (matlab based) 2d source distribution always returns &lt;script type=&quot;math/tex&quot;&gt;(\sqrt{n_src}+1)^2&lt;/script&gt; sources instead of &lt;script type=&quot;math/tex&quot;&gt;n_src&lt;/script&gt;. This will be dealt with by switching to the new source distribution based on hypervolume. Also the old approach did not manage cases, where coordinations of sources were negative. I’ve also corrected this.&lt;/p&gt;
+&lt;p&gt;During the tests of creating sources in the 2D case I found out an inconsistency. So that old (matlab based) 2d source distribution always returns &lt;script type=&quot;math/tex&quot;&gt;(\sqrt{n_{src}}+1)^2&lt;/script&gt; sources instead of &lt;script type=&quot;math/tex&quot;&gt;n_{src}&lt;/script&gt;. This will be dealt with by switching to the new source distribution based on hypervolume. Also the old approach did not manage cases, where coordinations of sources were negative. I’ve also corrected this.&lt;/p&gt;
 
 &lt;p&gt;The package is almost ready to drop the tests of comparison against the existing Matlab scripts and switch to comparison to model only.&lt;/p&gt;
 
@@ -84,23 +129,23 @@
 &lt;p&gt;The documentation is now hosted on readthedocs.org site: &lt;a href=&quot;http://pykcsd.readthedocs.org/en/latest/&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/week9/&quot;&gt;Refactoring continued (week 9)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 17, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week9/&quot;&gt;Refactoring continued (week 9)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 17, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Refactoring, speeding up (week 8)]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/week8/"/>
-  <id>/pykcsd-blog/articles/week8</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week8/"/>
+  <id>http://localhost:4000/articles/week8</id>
   <updated>2014-07-10T00:00:00-00:00</updated>
   <published>2014-07-10T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
   <content type="html">&lt;h3 id=&quot;refactoring&quot;&gt;Refactoring&lt;/h3&gt;
@@ -157,17 +202,17 @@ In [11]: show()
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/figure_monte_tpl.png&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/figure_monte_tpl.png&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/figure_monte_tpl.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/figure_monte_tpl.png&quot; /&gt;&lt;/a&gt;
 &lt;figcaption&gt;Potentials calculated with scipy.integrate.tplquad and Monte Carlo method (scikit-monaco)&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/figure_mc_tpl_err_pots.png&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/figure_mc_tpl_err_pots.png&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/figure_mc_tpl_err_pots.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/figure_mc_tpl_err_pots.png&quot; /&gt;&lt;/a&gt;
 &lt;figcaption&gt;Difference between tplquad and Monte Carlo method (npts=1e5) calculated potentials&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/figure_mc_tpl_rel_err.png&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/figure_mc_tpl_rel_err.png&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/figure_mc_tpl_rel_err.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/figure_mc_tpl_rel_err.png&quot; /&gt;&lt;/a&gt;
 &lt;figcaption&gt;Relative error between tplquad and Monte Carlo method (npts=1e5) calculated potentials&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -191,23 +236,23 @@ Wall time: 19.8 s
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/week8/&quot;&gt;Refactoring, speeding up (week 8)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 10, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week8/&quot;&gt;Refactoring, speeding up (week 8)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 10, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Three dimensional kCSD (week 7)]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/week7/"/>
-  <id>/pykcsd-blog/articles/week7</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week7/"/>
+  <id>http://localhost:4000/articles/week7</id>
   <updated>2014-07-06T00:00:00-00:00</updated>
   <published>2014-07-03T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
   <content type="html">&lt;h3 id=&quot;tldr---basic-version-of-kcsd3d-works-kcsd3d-imagesplotting&quot;&gt;TL;DR: - basic version of KCSD3D works, &lt;a href=&quot;#plotting&quot;&gt;KCSD3D images&lt;/a&gt;&lt;/h3&gt;
@@ -242,7 +287,7 @@ Wall time: 19.8 s
 &lt;p&gt;which for enables to distribute sources like this:&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/src2d_roots.png&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/src2d_roots.png&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/src2d_roots.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/src2d_roots.png&quot; /&gt;&lt;/a&gt;
 	&lt;figcaption&gt;old approach using roots&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -257,7 +302,7 @@ Wall time: 19.8 s
 and then calculate the side of each square and number of squares for each axis:&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/sources_3D.jpg&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/sources_3D.jpg&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/sources_3D.jpg&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/sources_3D.jpg&quot; /&gt;&lt;/a&gt;
 	&lt;figcaption&gt;The new approach in 3D illustrated&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -281,14 +326,14 @@ and then calculate the side of each square and number of squares for each axis:&
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/src2d_area.png&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/src2d_area.png&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/src2d_area.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/src2d_area.png&quot; /&gt;&lt;/a&gt;
 	&lt;figcaption&gt;new approach using hyper-volume (length/area/volume ...)&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;This scales well from 2D to 3D (and beyond), since it’s based on the conception of (hyper)volume.&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/src3d_volume.png&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/src3d_volume.png&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/src3d_volume.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/src3d_volume.png&quot; /&gt;&lt;/a&gt;
 	&lt;figcaption&gt;A 3D example&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -315,7 +360,7 @@ C(x,y,z) = \begin{cases}
 &lt;p&gt;Calculated at different distances, the function may look like this:&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/dist_table_3d.png&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/dist_table_3d.png&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/dist_table_3d.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/dist_table_3d.png&quot; /&gt;&lt;/a&gt;
 	&lt;figcaption&gt;dist table for inverse laplacian assuming gaussian base&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -367,7 +412,7 @@ n_{voxels} &lt; 1000000 %]]&gt;&lt;/script&gt; (100x100x100) which may not be me
 We can only visualize electrode positions in 3D as a cloud of points. Potentials and CSD can be presented as slices through chosen axes.&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/kcsd3d_mpl.png&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/kcsd3d_mpl.png&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/kcsd3d_mpl.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/kcsd3d_mpl.png&quot; /&gt;&lt;/a&gt;
 &lt;/figure&gt;
 
 &lt;h4 id=&quot;mayavi&quot;&gt;Mayavi&lt;/h4&gt;
@@ -388,7 +433,7 @@ mlab.outline()
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/kcsd3d_1.png&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/kcsd3d_1.png&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/kcsd3d_1.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/kcsd3d_1.png&quot; /&gt;&lt;/a&gt;
 	&lt;figcaption&gt;Looks fine, the planes can be adjusted interactively.&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -399,7 +444,7 @@ mlab.outline()
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/volumetric1.png&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/volumetric1.png&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/volumetric1.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/volumetric1.png&quot; /&gt;&lt;/a&gt;
 	&lt;figcaption&gt;May be a bit unclear with all the data displayed.&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -410,7 +455,7 @@ mlab.outline()
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/volumetric2.png&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/volumetric2.png&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/volumetric2.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/volumetric2.png&quot; /&gt;&lt;/a&gt;
 	&lt;figcaption&gt;It may be convenient to display only lower 20 and upper 20 percentiles of the data&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -427,7 +472,7 @@ mlab.outline()
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/combined.png&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/combined.png&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/combined.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/combined.png&quot; /&gt;&lt;/a&gt;
 	&lt;figcaption&gt;Combined approach&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -467,23 +512,23 @@ mlab.outline()
 &lt;p&gt;After managing this, the package will be ready to be deployed.&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/week7/&quot;&gt;Three dimensional kCSD (week 7)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 03, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week7/&quot;&gt;Three dimensional kCSD (week 7)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 03, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Handling delays, midterm evaluation, next step (week 6)]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/week6/"/>
-  <id>/pykcsd-blog/articles/week6</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week6/"/>
+  <id>http://localhost:4000/articles/week6</id>
   <updated>2014-06-27T00:00:00-00:00</updated>
   <published>2014-06-26T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;I had to pass my exams as quickly as possible and so did I.
@@ -505,7 +550,7 @@ In [8]: k.plot_all()
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/kcsd2d_reconstruction.png&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/kcsd2d_reconstruction.png&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/kcsd2d_reconstruction.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/kcsd2d_reconstruction.png&quot; /&gt;&lt;/a&gt;
 	&lt;figcaption&gt;Sample reconstruction&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -560,23 +605,23 @@ Carol&lt;/p&gt;
 &lt;p&gt;Also expect some 3D plots soon!&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/week6/&quot;&gt;Handling delays, midterm evaluation, next step (week 6)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 26, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week6/&quot;&gt;Handling delays, midterm evaluation, next step (week 6)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 26, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Two dimensional kCSD (week 5)]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/week5/"/>
-  <id>/pykcsd-blog/articles/week5</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week5/"/>
+  <id>http://localhost:4000/articles/week5</id>
   <updated>2014-06-19T00:00:00-00:00</updated>
   <published>2014-06-19T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;During this week I am still working on KCSD2D and passing exams at the Uni.&lt;/p&gt;
@@ -602,23 +647,23 @@ uint16(0.6)
 &lt;p&gt;This means that &lt;code&gt;uint16(x)&lt;/code&gt; from Matlab may be translated to Python as &lt;code&gt;np.uint16(round(x))&lt;/code&gt; obviously. It took me a while to find it out though.&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/week5/&quot;&gt;Two dimensional kCSD (week 5)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 19, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week5/&quot;&gt;Two dimensional kCSD (week 5)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 19, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Two dimensional kCSD (week 4)]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/week4/"/>
-  <id>/pykcsd-blog/articles/week4</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week4/"/>
+  <id>http://localhost:4000/articles/week4</id>
   <updated>2014-06-12T00:00:00-00:00</updated>
   <published>2014-06-12T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;kcsd-1d&quot;&gt;KCSD 1D&lt;/h2&gt;
@@ -645,7 +690,7 @@ However I will do my best and put as much time as possible into the project.&lt;
 &lt;p&gt;The next two or three weeks will be spent on developing two dimensional version of the KCSD method (KCSD2D). It assumes that data is collected with planar electrodes.&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/pykcsd2D_plane.jpg&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/pykcsd2D_plane.jpg&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/pykcsd2D_plane.jpg&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/pykcsd2D_plane.jpg&quot; /&gt;&lt;/a&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;This time we need to model our potentials in one missing dimension and reconstruct sources in two dimensions.
@@ -662,23 +707,23 @@ H(z) = \begin{cases}
 &lt;p&gt;There is a bit more juggling about distributing the sources properly.&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/week4/&quot;&gt;Two dimensional kCSD (week 4)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 12, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week4/&quot;&gt;Two dimensional kCSD (week 4)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 12, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[One dimensional kCSD (week 3)]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/week3/"/>
-  <id>/pykcsd-blog/articles/week3</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week3/"/>
+  <id>http://localhost:4000/articles/week3</id>
   <updated>2014-06-05T00:00:00-00:00</updated>
   <published>2014-06-05T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;During this week I am finishing the kCSD implementation that works with data from 1D measurements, moving the code to the main repository and writing tests.&lt;/p&gt;
@@ -702,7 +747,7 @@ H(x,y) = \begin{cases}
     &lt;p&gt;and &lt;script type=&quot;math/tex&quot;&gt;C(z)&lt;/script&gt; is the measured CSD&lt;/p&gt;
 
     &lt;figure&gt;
-     &lt;a href=&quot;/pykcsd-blog/images/pykcsd1D_cylinder.jpg&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/pykcsd1D_cylinder.jpg&quot; /&gt;&lt;/a&gt;
+     &lt;a href=&quot;http://localhost:4000/images/pykcsd1D_cylinder.jpg&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/pykcsd1D_cylinder.jpg&quot; /&gt;&lt;/a&gt;
  &lt;/figure&gt;
   &lt;/li&gt;
   &lt;li&gt;
@@ -716,7 +761,7 @@ H(x,y) = \begin{cases}
 &lt;/ol&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
@@ -726,20 +771,20 @@ H(x,y) = \begin{cases}
   &lt;/ol&gt;
 &lt;/div&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/week3/&quot;&gt;One dimensional kCSD (week 3)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 05, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week3/&quot;&gt;One dimensional kCSD (week 3)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on June 05, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[One dimensional kCSD (week 2)]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/week2/"/>
-  <id>/pykcsd-blog/articles/week2</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week2/"/>
+  <id>http://localhost:4000/articles/week2</id>
   <updated>2014-05-29T00:00:00-00:00</updated>
   <published>2014-05-29T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;During this week I am working on the kCSD implementation that works with data from measurements made by electrodes organized in lines.&lt;/p&gt;
@@ -750,23 +795,23 @@ This is summed up in &lt;a href=&quot;http://nbviewer.ipython.org/github/parkag/
 &lt;p&gt;I am still writing the pykCSD in IPython notebook and my current progress can be tracked &lt;a href=&quot;http://nbviewer.ipython.org/github/parkag/notebooks/blob/master/pykCSD/pykCSD%20refactored.ipynb&quot;&gt;here&lt;/a&gt;. This version will soon become obsolete as it will be reorganized and moved to the proper python source files in INCF/pykCSD repo.&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/week2/&quot;&gt;One dimensional kCSD (week 2)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 29, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week2/&quot;&gt;One dimensional kCSD (week 2)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 29, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Coding period starts (week 1)]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/week1/"/>
-  <id>/pykcsd-blog/articles/week1</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week1/"/>
+  <id>http://localhost:4000/articles/week1</id>
   <updated>2014-05-22T00:00:00-00:00</updated>
   <published>2014-05-22T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;We are now in the begining of the coding period. I will use this week to create the common interface for accessing the kCSD solvers for different dimensionality. It is a kind of stub that will be useful later and will help to create a clean and consistent interface.&lt;/p&gt;
@@ -774,23 +819,23 @@ This is summed up in &lt;a href=&quot;http://nbviewer.ipython.org/github/parkag/
 &lt;p&gt;This doesn’t take whole week and leaves some time for more challenging activities, such as exploring the kCSD method deeper.&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/week1/&quot;&gt;Coding period starts (week 1)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 22, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week1/&quot;&gt;Coding period starts (week 1)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 22, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Confusing definitions]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/confusion/"/>
-  <id>/pykcsd-blog/articles/confusion</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/confusion/"/>
+  <id>http://localhost:4000/articles/confusion</id>
   <updated>2014-05-21T00:00:00-00:00</updated>
   <published>2014-05-20T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;&lt;strong&gt;Definitions&lt;/strong&gt;&lt;/p&gt;
@@ -834,7 +879,7 @@ This is summed up in &lt;a href=&quot;http://nbviewer.ipython.org/github/parkag/
 &lt;/ul&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
@@ -847,20 +892,20 @@ This is summed up in &lt;a href=&quot;http://nbviewer.ipython.org/github/parkag/
   &lt;/ol&gt;
 &lt;/div&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/confusion/&quot;&gt;Confusing definitions&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 20, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/confusion/&quot;&gt;Confusing definitions&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 20, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Community Bonding Period and preparation (Week -1)]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/week-minus-1/"/>
-  <id>/pykcsd-blog/articles/week-minus-1</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week-minus-1/"/>
+  <id>http://localhost:4000/articles/week-minus-1</id>
   <updated>2014-05-15T00:00:00-00:00</updated>
   <published>2014-05-15T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;setting-up-the-environment&quot;&gt;Setting up the environment&lt;/h2&gt;
@@ -887,7 +932,7 @@ I followed these posts &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&
 &lt;p&gt;My idea is to create hacky and experimental versions as scripts in IPython notebook and then gradually refactor and move new features to the project on the INCF repo.&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
@@ -900,20 +945,20 @@ I followed these posts &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&
   &lt;/ol&gt;
 &lt;/div&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/week-minus-1/&quot;&gt;Community Bonding Period and preparation (Week -1)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 15, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week-minus-1/&quot;&gt;Community Bonding Period and preparation (Week -1)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 15, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Community Bonding Period (Week -2)]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/week-minus-2/"/>
-  <id>/pykcsd-blog/articles/week-minus-2</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week-minus-2/"/>
+  <id>http://localhost:4000/articles/week-minus-2</id>
   <updated>2014-05-07T00:00:00-00:00</updated>
   <published>2014-05-08T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;early-coding&quot;&gt;Early coding&lt;/h2&gt;
@@ -942,7 +987,7 @@ I followed these posts &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&
 &lt;p&gt;By a coincidence, one of the creators of 3dbar, who is also one of INCF mentors at GSoC 2014, Piotr Majka was going to practise before his PhD thesis defense shortly afterwards. So I became a part of his audience.&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;a href=&quot;/pykcsd-blog/images/pm_defense_prep.jpg&quot;&gt;&lt;img src=&quot;/pykcsd-blog/images/pm_defense_prep.jpg&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://localhost:4000/images/pm_defense_prep.jpg&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/pm_defense_prep.jpg&quot; /&gt;&lt;/a&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;Piotr told us about his successful procedure of integration of brain imaging data obtained from immunohistochemical stains, blockface images and through MRI to produce high-quality and consistent digital brain atlasses. He used the procedure to create a first complete &lt;a href=&quot;http://atlasing.incf.org/w/images/2/25/Majka_poster_neuroinformatics_2012.jpg&quot;&gt;reconstruction of an opossum’s brain&lt;/a&gt;.&lt;/p&gt;
@@ -950,23 +995,23 @@ I followed these posts &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&
 &lt;p&gt;Seeing my enthusiasm, he also invited me to his public PhD thesis defense on the following Friday.&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/week-minus-2/&quot;&gt;Community Bonding Period (Week -2)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 08, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week-minus-2/&quot;&gt;Community Bonding Period (Week -2)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 08, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Google Summer of Code pykCSD proposal]]></title>
-  <link rel="alternate" type="text/html" href="/pykcsd-blog/articles/proposal/"/>
-  <id>/pykcsd-blog/articles/proposal</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/proposal/"/>
+  <id>http://localhost:4000/articles/proposal</id>
   <updated>2014-05-03T00:00:00-00:00</updated>
   <published>2014-05-03T00:00:00+02:00</published>
   
   <author>
     <name>Grzegorz Parka</name>
-    <uri>/pykcsd-blog</uri>
+    <uri>http://localhost:4000</uri>
     <email>grzegorz.parka@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;I am very happy to announce that my proposal&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; has been accepted by the members of INCF and I will work on Python Object Oriented Kernel Current Source Density Toolbox project during this summer.&lt;/p&gt;
@@ -976,7 +1021,7 @@ I followed these posts &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&
 &lt;p&gt;This is going to be a great summer!&lt;/p&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;/pykcsd-blog/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
@@ -986,7 +1031,7 @@ I followed these posts &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&
   &lt;/ol&gt;
 &lt;/div&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/pykcsd-blog/articles/proposal/&quot;&gt;Google Summer of Code pykCSD proposal&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;/pykcsd-blog&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 03, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/proposal/&quot;&gt;Google Summer of Code pykCSD proposal&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on May 03, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>
