@@ -5,8 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Ensuring quality (week 10) &#8211; pykCSD @ GSoC</title>
-<meta name="description" content="week 10 - some code review and more coding">
+<title>Completing the project (week 11) &#8211; pykCSD @ GSoC</title>
+<meta name="description" content="week 11 - completing tasks">
 <meta name="keywords" content="coding">
 
 
@@ -14,16 +14,16 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ensuring quality (week 10)">
-<meta property="og:description" content="week 10 - some code review and more coding">
-<meta property="og:url" content="http://localhost:4000/articles/week10/">
+<meta property="og:title" content="Completing the project (week 11)">
+<meta property="og:description" content="week 11 - completing tasks">
+<meta property="og:url" content="http://localhost:4000/articles/week11/">
 <meta property="og:site_name" content="pykCSD @ GSoC">
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/articles/week10/">
+<link rel="canonical" href="http://localhost:4000/articles/week11/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="pykCSD @ GSoC Feed">
 
 
@@ -112,73 +112,91 @@
       <header class="entry-header">
         <span class="entry-tags"><a href="http://localhost:4000/tags/#coding" title="Pages tagged coding">coding</a></span>
         
-          <h1 class="entry-title">Ensuring quality (week 10)</h1>
+          <h1 class="entry-title">Completing the project (week 11)</h1>
         
       </header>
       <footer class="entry-meta">
         <img src="http://localhost:4000/images/profi_photo.jpg" alt="Grzegorz Parka photo" class="author-photo">
         <span class="author vcard">By <span class="fn"><a href="http://localhost:4000/about/" title="About Grzegorz Parka">Grzegorz Parka</a></span></span>
-        <span class="entry-date date published"><time datetime="2014-07-24T00:00:00+02:00"><i class="icon-calendar-empty"></i> July 24, 2014</time></span>
-        <span class="entry-date date modified"><time datetime="2014-07-24"><i class="icon-pencil"></i> July 24, 2014</time></span>
+        <span class="entry-date date published"><time datetime="2014-07-31T00:00:00+02:00"><i class="icon-calendar-empty"></i> July 31, 2014</time></span>
+        <span class="entry-date date modified"><time datetime="2014-07-31"><i class="icon-pencil"></i> July 31, 2014</time></span>
         <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a></span>
-        <span><a href="http://localhost:4000/articles/week10/" rel="bookmark" title="Ensuring quality (week 10)"><i class="icon-link"></i> Permalink</a></span>
+        <span><a href="http://localhost:4000/articles/week11/" rel="bookmark" title="Completing the project (week 11)"><i class="icon-link"></i> Permalink</a></span>
         
         <span class="social-share-facebook">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/week10/" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/week11/" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
         <span class="social-share-twitter">
-            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Ensuring quality (week 10)&url=http://localhost:4000/articles/week10/&via=" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
+            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Completing the project (week 11)&url=http://localhost:4000/articles/week11/&via=" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
         <span class="social-share-googleplus">
-            <a href="https://plus.google.com/share?url=http://localhost:4000/articles/week10/" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/articles/week11/" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
             <!-- /.social-share -->
       </footer>
       <div class="entry-content">
-        <h3 id="code-reviewoverview">Code review/overview</h3>
-<p>This week me, Daniel and one of his PhD students, Chaitanya met at Nencki Institute of Experimental Biology and made a code review.
-We found few small flaws in the code, for example the new source distribution I introduced didn’t place the sources completely evenly.</p>
+        <p>The end of GSoC 2014 coding phase is getting closer and closer. This week I’m completing the tasks listed in the previous post.</p>
 
-<p>We also discussed the 3D laplace equation for spherical-symmetric sources, using step-case. This alternative approach is about to be added to the 3D KCSD variant.</p>
+<h2 id="tasks-completed-this-week">Tasks completed this week:</h2>
 
-<h3 id="new-functionality">New functionality</h3>
+<h3 id="normalizing-constants-in-2d3d-basis-functions">Normalizing constants in 2d/3d basis functions</h3>
+<p>It came out that 2D gaussian basis function in the previous KCSD script was not normalized. After normalization the tests which compare KCSD2D to matlab scripts are not passing. Unwillingly, I’m dropping the old KCSD2D comparison tests.</p>
 
-<h4 id="analytic-relation-between-lfp-and-csd">Analytic relation between LFP and CSD</h4>
-<p>Daniel suggested that the package should offer a possibility to add a case in 3D kCSD, where it is possible to find an analytic solution of the relation between sources and potential.</p>
+<h3 id="creating-validation-framework">Creating validation framework</h3>
+<p>This task is about creating a set of routines which help to compare 1D, 2D, 3D KCSD reconstruction against model CSD and potentials calculated using forward scheme.</p>
 
-<p>He sent me a nice pdf with the idea explained. And the conculsion is that:</p>
+<h4 id="sample-reconstructions">Sample reconstructions</h4>
 
-<script type="math/tex; mode=display">% <![CDATA[
+<p>1D reconstruction</p>
 
-V(r) = 
-\left \lbrace 
-\begin{array}{ll}
-\displaystyle \frac{C}{4 \pi \sigma r} & \textrm{for} \,\, r > R \\[1em]
-\displaystyle \frac{3 C}{8 \pi \sigma R^3}(R^2-r^2/3) & \textrm{for} \,\,  r < R  
-\end{array}
-\right .
- %]]></script>
+<pre><code>x = np.linspace(-10, 10, 100)
 
-<p>where C=1 is the total current, R is source radius, r is actual position and <script type="math/tex">\sigma</script> is conductance.</p>
+true_csd = 1.0 * np.exp(-(x + 2.)**2/(2 * np.pi * 0.5))
+true_csd += 0.5 * np.exp(-(x - 7)**2/(2 * np.pi * 1.0))
 
-<h3 id="tasks-before-the-evaluation">Tasks before the evaluation</h3>
+elec_pos = np.array([-9.0, -6.9, -3.1, -0.3, 2.5, 5.7, 9.3])
+params = {'xmin': -10, 'xmax': 10, 'gdX': 0.20}
+indx = [5, 15, 25, 45, 51, 73, 89]
 
-<p>We discussed a list of tasks that should be done before the final evaluation. It consists of:</p>
+compare_with_model_1D(x, true_csd, indx, params)
+</code></pre>
+
+<figure>
+	<a href="http://localhost:4000/images/figure_1D_model_comparison.png"><img src="http://localhost:4000/images/figure_1D_model_comparison.png" /></a>
+	<figcaption>Sample 1D comparison</figcaption>
+</figure>
+
+<p>2D reconstruction</p>
+
+<pre><code>xlin = np.linspace(0, 10, 101)
+ylin = np.linspace(0, 10, 101)
+X, Y = np.meshgrid(xlin, ylin)
+true_csd = 1.0 * np.exp(-((X - 8.)**2 + (Y - 8)**2)/(2 * np.pi * 1.5))
+true_csd -= 0.5 * np.exp(-((X - 1)**2 + (Y - 9)**2)/(2 * np.pi * 2.0))
+true_csd += 1.5 * np.exp(-((X - 2)**2 + (Y - 2)**2)/(2 * np.pi * 2.0))
+kcsd_params = {'xmin': 0, 'xmax': 10,
+          'ymin': 0, 'ymax': 10,
+          'gdX': 0.10, 'gdY': 0.10,
+          'h': 0.5}
+indx = [[5, 5], [15, 10], [25, 50], [45, 70], [51, 30],
+	[73, 89], [5, 80], [90, 15], [60,90]]
+compare_with_model_2D(X, Y, true_csd, indx, kcsd_params)
+</code></pre>
+<figure>
+	<a href="http://localhost:4000/images/figure_2D_model_comparison.png"><img src="http://localhost:4000/images/figure_2D_model_comparison.png" /></a>
+	<figcaption>Sample 2D comparison</figcaption>
+</figure>
+
+<p>3D reconstruction is missing as I haven’t yet found a clear and simple way to display multiple 3D plots.</p>
+
+<h3 id="time-series-management">Time series management</h3>
+
+<p>The pykCSD toolbox can now estimate CSD for time recordings and calculate multiple frames.
+However with many time frames and especially in the 3D case, the memory usage can go very high. This is yet to be optimized.</p>
+
+<h3 id="whats-left">What’s left:</h3>
 
 <ul>
-  <li>improving validation method in 2d/3d against model data</li>
-  <li>
-    <p>creating validation framework</p>
-  </li>
-  <li>
-    <p>recalculating normalization constants in basis functions</p>
-  </li>
-  <li>comparing images matlab/python visually (with provided data)</li>
-  <li>
-    <p>time series management</p>
-  </li>
-  <li>
-    <p>cross validation for R and h parameters at once</p>
-  </li>
+  <li>Comparing images matlab/python visually (with existing datasets)</li>
   <li>tests on bigger datasets: 100, 1000, 10k electrodes and time frames</li>
-  <li>describing workflows</li>
+  <li>describing workflows for documentation</li>
   <li>package deployment</li>
 </ul>
 
@@ -191,10 +209,8 @@ V(r) =
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://localhost:4000/articles/week9/" class="btn" title="Refactoring continued (week 9)">Previous article</a>
+        <a href="http://localhost:4000/articles/week10/" class="btn" title="Ensuring quality (week 10)">Previous article</a>
       
-      
-        <a href="http://localhost:4000/articles/week11/" class="btn" title="Completing the project (week 11)">Next article</a>
       
     </nav><!-- /.pagination -->
   </article>

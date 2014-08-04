@@ -4,13 +4,101 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000/" />
-<updated>2014-07-27T22:48:12+02:00</updated>
+<updated>2014-08-04T07:25:03+02:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Grzegorz Parka</name>
   <uri>http://localhost:4000/</uri>
   <email>grzegorz.parka@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Completing the project (week 11)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week11/"/>
+  <id>http://localhost:4000/articles/week11</id>
+  <updated>2014-07-31T00:00:00-00:00</updated>
+  <published>2014-07-31T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;The end of GSoC 2014 coding phase is getting closer and closer. This week I’m completing the tasks listed in the previous post.&lt;/p&gt;
+
+&lt;h2 id=&quot;tasks-completed-this-week&quot;&gt;Tasks completed this week:&lt;/h2&gt;
+
+&lt;h3 id=&quot;normalizing-constants-in-2d3d-basis-functions&quot;&gt;Normalizing constants in 2d/3d basis functions&lt;/h3&gt;
+&lt;p&gt;It came out that 2D gaussian basis function in the previous KCSD script was not normalized. After normalization the tests which compare KCSD2D to matlab scripts are not passing. Unwillingly, I’m dropping the old KCSD2D comparison tests.&lt;/p&gt;
+
+&lt;h3 id=&quot;creating-validation-framework&quot;&gt;Creating validation framework&lt;/h3&gt;
+&lt;p&gt;This task is about creating a set of routines which help to compare 1D, 2D, 3D KCSD reconstruction against model CSD and potentials calculated using forward scheme.&lt;/p&gt;
+
+&lt;h4 id=&quot;sample-reconstructions&quot;&gt;Sample reconstructions&lt;/h4&gt;
+
+&lt;p&gt;1D reconstruction&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;x = np.linspace(-10, 10, 100)
+
+true_csd = 1.0 * np.exp(-(x + 2.)**2/(2 * np.pi * 0.5))
+true_csd += 0.5 * np.exp(-(x - 7)**2/(2 * np.pi * 1.0))
+
+elec_pos = np.array([-9.0, -6.9, -3.1, -0.3, 2.5, 5.7, 9.3])
+params = {'xmin': -10, 'xmax': 10, 'gdX': 0.20}
+indx = [5, 15, 25, 45, 51, 73, 89]
+
+compare_with_model_1D(x, true_csd, indx, params)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/figure_1D_model_comparison.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/figure_1D_model_comparison.png&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;Sample 1D comparison&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;2D reconstruction&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;xlin = np.linspace(0, 10, 101)
+ylin = np.linspace(0, 10, 101)
+X, Y = np.meshgrid(xlin, ylin)
+true_csd = 1.0 * np.exp(-((X - 8.)**2 + (Y - 8)**2)/(2 * np.pi * 1.5))
+true_csd -= 0.5 * np.exp(-((X - 1)**2 + (Y - 9)**2)/(2 * np.pi * 2.0))
+true_csd += 1.5 * np.exp(-((X - 2)**2 + (Y - 2)**2)/(2 * np.pi * 2.0))
+kcsd_params = {'xmin': 0, 'xmax': 10,
+          'ymin': 0, 'ymax': 10,
+          'gdX': 0.10, 'gdY': 0.10,
+          'h': 0.5}
+indx = [[5, 5], [15, 10], [25, 50], [45, 70], [51, 30],
+	[73, 89], [5, 80], [90, 15], [60,90]]
+compare_with_model_2D(X, Y, true_csd, indx, kcsd_params)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure&gt;
+	&lt;a href=&quot;http://localhost:4000/images/figure_2D_model_comparison.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/figure_2D_model_comparison.png&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;Sample 2D comparison&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;3D reconstruction is missing as I haven’t yet found a clear and simple way to display multiple 3D plots.&lt;/p&gt;
+
+&lt;h3 id=&quot;time-series-management&quot;&gt;Time series management&lt;/h3&gt;
+
+&lt;p&gt;The pykCSD toolbox can now estimate CSD for time recordings and calculate multiple frames.
+However with many time frames and especially in the 3D case, the memory usage can go very high. This is yet to be optimized.&lt;/p&gt;
+
+&lt;h3 id=&quot;whats-left&quot;&gt;What’s left:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Comparing images matlab/python visually (with existing datasets)&lt;/li&gt;
+  &lt;li&gt;tests on bigger datasets: 100, 1000, 10k electrodes and time frames&lt;/li&gt;
+  &lt;li&gt;describing workflows for documentation&lt;/li&gt;
+  &lt;li&gt;package deployment&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week11/&quot;&gt;Completing the project (week 11)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 31, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -137,7 +225,7 @@ V(r) =
 
 
 <entry>
-  <title type="html"><![CDATA[Refactoring, speeding up (week 8)]]></title>
+  <title type="html"><![CDATA[Refactoring, fixing integrals (week 8)]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week8/"/>
   <id>http://localhost:4000/articles/week8</id>
   <updated>2014-07-10T00:00:00-00:00</updated>
@@ -239,7 +327,7 @@ Wall time: 19.8 s
 	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week8/&quot;&gt;Refactoring, speeding up (week 8)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 10, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week8/&quot;&gt;Refactoring, fixing integrals (week 8)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on July 10, 2014.&lt;/p&gt;</content>
 </entry>
 
 
