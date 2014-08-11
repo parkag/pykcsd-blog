@@ -4,7 +4,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000/" />
-<updated>2014-08-12T00:01:38+02:00</updated>
+<updated>2014-08-12T00:27:18+02:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Grzegorz Parka</name>
@@ -102,9 +102,9 @@ if __name__ == &quot;__main__&quot;:
 
 &lt;h3 id=&quot;package-deployment&quot;&gt;Package deployment&lt;/h3&gt;
 
-&lt;p&gt;The built package is deployed on PIP and can be seen here.&lt;/p&gt;
+&lt;p&gt;The built package is deployed on PIP and can be seen &lt;a href=&quot;https://pypi.python.org/pypi/pykCSD&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;It may be installed with &lt;code&gt;sudo pip install pykCSD&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;It may be installed with &lt;code&gt;sudo pip install pykCSD&lt;/code&gt; (hopefully :P)&lt;/p&gt;
 
 &lt;figure&gt;
 	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
