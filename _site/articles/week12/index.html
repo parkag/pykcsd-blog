@@ -5,8 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Completing the project (week 11) &#8211; pykCSD @ GSoC</title>
-<meta name="description" content="week 11 - completing tasks">
+<title>Right before the final evaluation (week 12) &#8211; pykCSD @ GSoC</title>
+<meta name="description" content="Right before the final evaluation">
 <meta name="keywords" content="coding">
 
 
@@ -14,16 +14,16 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Completing the project (week 11)">
-<meta property="og:description" content="week 11 - completing tasks">
-<meta property="og:url" content="http://localhost:4000/articles/week11/">
+<meta property="og:title" content="Right before the final evaluation (week 12)">
+<meta property="og:description" content="Right before the final evaluation">
+<meta property="og:url" content="http://localhost:4000/articles/week12/">
 <meta property="og:site_name" content="pykCSD @ GSoC">
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/articles/week11/">
+<link rel="canonical" href="http://localhost:4000/articles/week12/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="pykCSD @ GSoC Feed">
 
 
@@ -112,93 +112,105 @@
       <header class="entry-header">
         <span class="entry-tags"><a href="http://localhost:4000/tags/#coding" title="Pages tagged coding">coding</a></span>
         
-          <h1 class="entry-title">Completing the project (week 11)</h1>
+          <h1 class="entry-title">Right before the final evaluation (week 12)</h1>
         
       </header>
       <footer class="entry-meta">
         <img src="http://localhost:4000/images/profi_photo.jpg" alt="Grzegorz Parka photo" class="author-photo">
         <span class="author vcard">By <span class="fn"><a href="http://localhost:4000/about/" title="About Grzegorz Parka">Grzegorz Parka</a></span></span>
-        <span class="entry-date date published"><time datetime="2014-07-31T00:00:00+02:00"><i class="icon-calendar-empty"></i> July 31, 2014</time></span>
-        <span class="entry-date date modified"><time datetime="2014-07-31"><i class="icon-pencil"></i> July 31, 2014</time></span>
+        <span class="entry-date date published"><time datetime="2014-08-10T00:00:00+02:00"><i class="icon-calendar-empty"></i> August 10, 2014</time></span>
+        <span class="entry-date date modified"><time datetime="2014-08-10"><i class="icon-pencil"></i> August 10, 2014</time></span>
         <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a></span>
-        <span><a href="http://localhost:4000/articles/week11/" rel="bookmark" title="Completing the project (week 11)"><i class="icon-link"></i> Permalink</a></span>
+        <span><a href="http://localhost:4000/articles/week12/" rel="bookmark" title="Right before the final evaluation (week 12)"><i class="icon-link"></i> Permalink</a></span>
         
         <span class="social-share-facebook">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/week11/" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/week12/" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
         <span class="social-share-twitter">
-            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Completing the project (week 11)&url=http://localhost:4000/articles/week11/&via=" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
+            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Right before the final evaluation (week 12)&url=http://localhost:4000/articles/week12/&via=" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
         <span class="social-share-googleplus">
-            <a href="https://plus.google.com/share?url=http://localhost:4000/articles/week11/" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/articles/week12/" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
             <!-- /.social-share -->
       </footer>
       <div class="entry-content">
-        <p>The end of GSoC 2014 coding phase is getting closer and closer. This week I’m completing the tasks listed in the previous post.</p>
+        <p>We are approaching the soft deadline for GSoC2014. It’s about time to complete the documentation and close the iteration.</p>
 
 <h2 id="tasks-completed-this-week">Tasks completed this week:</h2>
 
-<h3 id="normalizing-constants-in-2d3d-basis-functions">Normalizing constants in 2d/3d basis functions</h3>
-<p>It came out that 2D gaussian basis function in the previous KCSD script was not normalized. After normalization the tests which compare KCSD2D to matlab scripts are not passing. Unwillingly, I’m dropping the old KCSD2D comparison tests.</p>
+<p>I managed to fix some problems connected with introducing time series management in the KCSD solvers. This meant adjusting tests and any code samples where I called KCSDs.</p>
 
-<h3 id="creating-validation-framework">Creating validation framework</h3>
-<p>This task is about creating a set of routines which help to compare 1D, 2D, 3D KCSD reconstruction against model CSD and potentials calculated using forward scheme.</p>
+<h3 id="defining-use-cases-for-documentation">Defining use cases for documentation</h3>
 
-<h4 id="sample-reconstructions">Sample reconstructions</h4>
+<p>I have added some basic use cases to the documentation, so that users can start with an example.</p>
 
-<p>1D reconstruction</p>
+<p>The samples may be found <a href="http://pykcsd.readthedocs.org/en/latest/usecases.html">here</a> or built from the source.</p>
 
-<pre><code>x = np.linspace(-10, 10, 100)
+<h3 id="comparing-more-detailed-reconstructions-with-its-matlab-versions">Comparing more detailed reconstructions with it’s matlab versions</h3>
+<p>This is done using provided datasets.</p>
 
-true_csd = 1.0 * np.exp(-(x + 2.)**2/(2 * np.pi * 0.5))
-true_csd += 0.5 * np.exp(-(x - 7)**2/(2 * np.pi * 1.0))
+<h5 id="d-timeseries-reconstruction">1D timeseries reconstruction</h5>
 
-elec_pos = np.array([-9.0, -6.9, -3.1, -0.3, 2.5, 5.7, 9.3])
-params = {'xmin': -10, 'xmax': 10, 'gdX': 0.20}
-indx = [5, 15, 25, 45, 51, 73, 89]
+<pre><code>from pylab import *
+from scipy.io import loadmat
+from pykCSD.pykCSD import KCSD
 
-compare_with_model_1D(x, true_csd, indx, params)
+
+def timeplot_1D():
+    el_pos = loadmat('datasets/test_data1')['elPos']
+    pots = loadmat('datasets/test_data1')['pots']
+    params = {'xmin': 0.0, 'xmax': 1.9, 'gdX': 0.01,
+              'h': 1.0, 'R_init': (el_pos.T[1]-el_pos.T[0])}
+    k = KCSD(el_pos.T, np.array(pots), params)
+    k.estimate_pots()
+    k.estimate_csd()
+
+    fig = plt.figure()
+    
+    ax11 = fig.add_subplot(1,2,1)
+    im1 = imshow(k.solver.estimated_pots, aspect="auto", interpolation="none")
+    plt.colorbar(im1)
+    ax11.set_title('Estimated pots')
+    ax11.set_xlabel('time steps')
+    ax11.set_ylabel('space')
+    
+    ax12 = fig.add_subplot(1,2,2)
+    im2 = imshow(k.solver.estimated_csd, aspect="auto", interpolation="none")
+    plt.colorbar(im2)
+    ax12.set_title('Estimated CSD')
+    ax12.set_xlabel('time steps')
+    ax12.set_ylabel('space')
+
+    show()
+
+if __name__ == "__main__":
+    timeplot_1D()
 </code></pre>
 
 <figure>
-	<a href="http://localhost:4000/images/figure_1D_model_comparison.png"><img src="http://localhost:4000/images/figure_1D_model_comparison.png" /></a>
-	<figcaption>Sample 1D comparison</figcaption>
+    <a href="http://localhost:4000/images/comparison_with_matlab_1dtimeframe_pykcsd.png"><img src="http://localhost:4000/images/comparison_with_matlab_1dtimeframe_pykcsd.png" /></a>
+    <figcaption>1D time series (no CV) - python</figcaption>
 </figure>
 
-<p>2D reconstruction</p>
-
-<pre><code>xlin = np.linspace(0, 10, 101)
-ylin = np.linspace(0, 10, 101)
-X, Y = np.meshgrid(xlin, ylin)
-true_csd = 1.0 * np.exp(-((X - 8.)**2 + (Y - 8)**2)/(2 * np.pi * 1.5))
-true_csd -= 0.5 * np.exp(-((X - 1)**2 + (Y - 9)**2)/(2 * np.pi * 2.0))
-true_csd += 1.5 * np.exp(-((X - 2)**2 + (Y - 2)**2)/(2 * np.pi * 2.0))
-kcsd_params = {'xmin': 0, 'xmax': 10,
-          'ymin': 0, 'ymax': 10,
-          'gdX': 0.10, 'gdY': 0.10,
-          'h': 0.5}
-indx = [[5, 5], [15, 10], [25, 50], [45, 70], [51, 30],
-	[73, 89], [5, 80], [90, 15], [60,90]]
-compare_with_model_2D(X, Y, true_csd, indx, kcsd_params)
-</code></pre>
 <figure>
-	<a href="http://localhost:4000/images/figure_2D_model_comparison.png"><img src="http://localhost:4000/images/figure_2D_model_comparison.png" /></a>
-	<figcaption>Sample 2D comparison</figcaption>
+    <a href="http://localhost:4000/images/kcsd1dtime_matlab.png"><img src="http://localhost:4000/images/kcsd1dtime_matlab.png" /></a>
+    <figcaption>1D time series (no CV) - matlab</figcaption>
 </figure>
 
-<p>3D reconstruction is missing as I haven’t yet found a clear and simple way to display multiple 3D plots.</p>
+<h5 id="kcsd2d">KCSD2D</h5>
+<figure>
+    <a href="http://localhost:4000/images/kcsd2d_python_comp.png"><img src="http://localhost:4000/images/kcsd2d_python_comp.png" /></a>
+    <figcaption>2D single frame reconstruction(no CV) - python</figcaption>
+</figure>
 
-<h3 id="time-series-management">Time series management</h3>
+<figure>
+    <a href="http://localhost:4000/images/kcsd2d_matlab.png"><img src="http://localhost:4000/images/kcsd2d_matlab.png" /></a>
+    <figcaption>2D single frame reconstruction (no CV) - matlab</figcaption>
+</figure>
 
-<p>The pykCSD toolbox can now estimate CSD for time recordings and calculate multiple frames.
-However with many time frames and especially in the 3D case, the memory usage can go very high. This is yet to be optimized.</p>
+<h3 id="package-deployment">Package deployment</h3>
 
-<h3 id="whats-left">What’s left:</h3>
+<p>The built package is deployed on PIP and can be seen here.</p>
 
-<ul>
-  <li>Comparing images matlab/python visually (with existing datasets)</li>
-  <li>tests on bigger datasets: 100, 1000, 10k electrodes and time frames</li>
-  <li>describing workflows for documentation</li>
-  <li>package deployment</li>
-</ul>
+<p>It may be installed with <code>sudo pip install pykCSD</code></p>
 
 <figure>
 	<img src="http://localhost:4000/images/gsoc_horizontal.jpg" width="100%" />
@@ -209,10 +221,8 @@ However with many time frames and especially in the 3D case, the memory usage ca
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://localhost:4000/articles/week10/" class="btn" title="Ensuring quality (week 10)">Previous article</a>
+        <a href="http://localhost:4000/articles/week11/" class="btn" title="Completing the project (week 11)">Previous article</a>
       
-      
-        <a href="http://localhost:4000/articles/week12/" class="btn" title="Right before the final evaluation (week 12)">Next article</a>
       
     </nav><!-- /.pagination -->
   </article>

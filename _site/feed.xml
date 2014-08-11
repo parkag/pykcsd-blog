@@ -4,13 +4,113 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000/" />
-<updated>2014-08-04T07:25:03+02:00</updated>
+<updated>2014-08-11T23:50:32+02:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Grzegorz Parka</name>
   <uri>http://localhost:4000/</uri>
   <email>grzegorz.parka@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Right before the final evaluation (week 12)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/week12/"/>
+  <id>http://localhost:4000/articles/week12</id>
+  <updated>2014-08-10T00:00:00-00:00</updated>
+  <published>2014-08-10T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;We are approaching the soft deadline for GSoC2014. It’s about time to complete the documentation and close the iteration.&lt;/p&gt;
+
+&lt;h2 id=&quot;tasks-completed-this-week&quot;&gt;Tasks completed this week:&lt;/h2&gt;
+
+&lt;p&gt;I managed to fix some problems connected with introducing time series management in the KCSD solvers. This meant adjusting tests and any code samples where I called KCSDs.&lt;/p&gt;
+
+&lt;h3 id=&quot;defining-use-cases-for-documentation&quot;&gt;Defining use cases for documentation&lt;/h3&gt;
+
+&lt;p&gt;I have added some basic use cases to the documentation, so that users can start with an example.&lt;/p&gt;
+
+&lt;p&gt;The samples may be found &lt;a href=&quot;http://pykcsd.readthedocs.org/en/latest/usecases.html&quot;&gt;here&lt;/a&gt; or built from the source.&lt;/p&gt;
+
+&lt;h3 id=&quot;comparing-more-detailed-reconstructions-with-its-matlab-versions&quot;&gt;Comparing more detailed reconstructions with it’s matlab versions&lt;/h3&gt;
+&lt;p&gt;This is done using provided datasets.&lt;/p&gt;
+
+&lt;h5 id=&quot;d-timeseries-reconstruction&quot;&gt;1D timeseries reconstruction&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;from pylab import *
+from scipy.io import loadmat
+from pykCSD.pykCSD import KCSD
+
+
+def timeplot_1D():
+    el_pos = loadmat('datasets/test_data1')['elPos']
+    pots = loadmat('datasets/test_data1')['pots']
+    params = {'xmin': 0.0, 'xmax': 1.9, 'gdX': 0.01,
+              'h': 1.0, 'R_init': (el_pos.T[1]-el_pos.T[0])}
+    k = KCSD(el_pos.T, np.array(pots), params)
+    k.estimate_pots()
+    k.estimate_csd()
+
+    fig = plt.figure()
+    
+    ax11 = fig.add_subplot(1,2,1)
+    im1 = imshow(k.solver.estimated_pots, aspect=&quot;auto&quot;, interpolation=&quot;none&quot;)
+    plt.colorbar(im1)
+    ax11.set_title('Estimated pots')
+    ax11.set_xlabel('time steps')
+    ax11.set_ylabel('space')
+    
+    ax12 = fig.add_subplot(1,2,2)
+    im2 = imshow(k.solver.estimated_csd, aspect=&quot;auto&quot;, interpolation=&quot;none&quot;)
+    plt.colorbar(im2)
+    ax12.set_title('Estimated CSD')
+    ax12.set_xlabel('time steps')
+    ax12.set_ylabel('space')
+
+    show()
+
+if __name__ == &quot;__main__&quot;:
+    timeplot_1D()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;figure&gt;
+    &lt;a href=&quot;http://localhost:4000/images/comparison_with_matlab_1dtimeframe_pykcsd.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/comparison_with_matlab_1dtimeframe_pykcsd.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;1D time series (no CV) - python&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;
+    &lt;a href=&quot;http://localhost:4000/images/kcsd1dtime_matlab.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/kcsd1dtime_matlab.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;1D time series (no CV) - matlab&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h5 id=&quot;kcsd2d&quot;&gt;KCSD2D&lt;/h5&gt;
+&lt;figure&gt;
+    &lt;a href=&quot;http://localhost:4000/images/kcsd2d_python_comp.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/kcsd2d_python_comp.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;2D single frame reconstruction(no CV) - python&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;
+    &lt;a href=&quot;http://localhost:4000/images/kcsd2d_matlab.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/kcsd2d_matlab.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;2D single frame reconstruction (no CV) - matlab&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;package-deployment&quot;&gt;Package deployment&lt;/h3&gt;
+
+&lt;p&gt;The built package is deployed on PIP and can be seen here.&lt;/p&gt;
+
+&lt;p&gt;It may be installed with &lt;code&gt;sudo pip install pykCSD&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/week12/&quot;&gt;Right before the final evaluation (week 12)&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on August 10, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
