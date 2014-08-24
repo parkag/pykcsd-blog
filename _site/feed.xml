@@ -4,13 +4,62 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000/" />
-<updated>2014-08-12T00:27:18+02:00</updated>
+<updated>2014-08-24T21:27:55+02:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Grzegorz Parka</name>
   <uri>http://localhost:4000/</uri>
   <email>grzegorz.parka@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Final evaluation]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/finish/"/>
+  <id>http://localhost:4000/articles/finish</id>
+  <updated>2014-08-24T00:00:00-00:00</updated>
+  <published>2014-08-24T00:00:00+02:00</published>
+  
+  <author>
+    <name>Grzegorz Parka</name>
+    <uri>http://localhost:4000</uri>
+    <email>grzegorz.parka@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;The coding phase of Google Summer of Code 2014 is over. So there come the results of final evaluation.&lt;/p&gt;
+
+&lt;h3 id=&quot;final-evaluation&quot;&gt;Final evaluation&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hi Grzegorz Parka,&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;We have processed the evaluation for your project named Object Oriented Python Kernel Current Source Density toolbox with International &amp;gt; Neuroinformatics Coordinating Facility.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Congratulations, from our data it seems that you have successfully passed the Google Summer of Code 2014 - Final Evaluation. Please contact your mentor to discuss the results of your evaluation and to plan your goals and development plan for the rest of the program&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Greetings,
+The Google Open Source Programs Team &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I’m really happy about!&lt;/p&gt;
+
+&lt;h3 id=&quot;further-development&quot;&gt;Further development&lt;/h3&gt;
+
+&lt;p&gt;Of course it is not the end of pykCSD project. I’ve just programmed a working alfa version during this summer. The skills that I developed during the project will be further used to maintain and even extend the package.&lt;/p&gt;
+
+&lt;p&gt;Also it’s a pleasure to work with Daniel :)&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/finish/&quot;&gt;Final evaluation&lt;/a&gt; was originally published by Grzegorz Parka at &lt;a href=&quot;http://localhost:4000&quot;&gt;pykCSD @ GSoC&lt;/a&gt; on August 24, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -728,15 +777,18 @@ After two days of my examination period and I am already done!&lt;/p&gt;
 &lt;p&gt;The two dimensional variant of KCSD works.
 A sample reconstruction looks like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;In [1]: from pykCSD.pykCSD import KCSD
-In [2]: import numpy as np
-In [3]: elec_pos = np.array([[0, 0], [0, 1], [1,0], [1,1], [0.5,0.5]])
-In [4]: pots = np.array([0,0,0,0,1])
-In [5]: k = KCSD(elec_pos, pots, params={'x_min': -2, 'x_max': 2, 'y_min':-2, 'y_max':2})
-In [6]: k.estimate_pots()
-In [7]: k.estimate_csd()
-In [8]: k.plot_all()
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div&gt;&lt;div class=&quot;CodeRay&quot;&gt;
+  &lt;div class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n1&quot; name=&quot;n1&quot;&gt;1&lt;/a&gt;&lt;/span&gt;In [&lt;span style=&quot;color:#00D&quot;&gt;1&lt;/span&gt;]: &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;from&lt;/span&gt; &lt;span style=&quot;color:#B44;font-weight:bold&quot;&gt;pykCSD.pykCSD&lt;/span&gt; &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;import&lt;/span&gt; &lt;span style=&quot;color:#B44;font-weight:bold&quot;&gt;KCSD&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n2&quot; name=&quot;n2&quot;&gt;2&lt;/a&gt;&lt;/span&gt;In [&lt;span style=&quot;color:#00D&quot;&gt;2&lt;/span&gt;]: &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;import&lt;/span&gt; &lt;span style=&quot;color:#B44;font-weight:bold&quot;&gt;numpy&lt;/span&gt; &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;as&lt;/span&gt; np
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n3&quot; name=&quot;n3&quot;&gt;3&lt;/a&gt;&lt;/span&gt;In [&lt;span style=&quot;color:#00D&quot;&gt;3&lt;/span&gt;]: elec_pos = np.array([[&lt;span style=&quot;color:#00D&quot;&gt;0&lt;/span&gt;, &lt;span style=&quot;color:#00D&quot;&gt;0&lt;/span&gt;], [&lt;span style=&quot;color:#00D&quot;&gt;0&lt;/span&gt;, &lt;span style=&quot;color:#00D&quot;&gt;1&lt;/span&gt;], [&lt;span style=&quot;color:#00D&quot;&gt;1&lt;/span&gt;,&lt;span style=&quot;color:#00D&quot;&gt;0&lt;/span&gt;], [&lt;span style=&quot;color:#00D&quot;&gt;1&lt;/span&gt;,&lt;span style=&quot;color:#00D&quot;&gt;1&lt;/span&gt;], [&lt;span style=&quot;color:#60E&quot;&gt;0.5&lt;/span&gt;,&lt;span style=&quot;color:#60E&quot;&gt;0.5&lt;/span&gt;]])
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n4&quot; name=&quot;n4&quot;&gt;4&lt;/a&gt;&lt;/span&gt;In [&lt;span style=&quot;color:#00D&quot;&gt;4&lt;/span&gt;]: pots = np.array([&lt;span style=&quot;color:#00D&quot;&gt;0&lt;/span&gt;,&lt;span style=&quot;color:#00D&quot;&gt;0&lt;/span&gt;,&lt;span style=&quot;color:#00D&quot;&gt;0&lt;/span&gt;,&lt;span style=&quot;color:#00D&quot;&gt;0&lt;/span&gt;,&lt;span style=&quot;color:#00D&quot;&gt;1&lt;/span&gt;])
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n5&quot; name=&quot;n5&quot;&gt;5&lt;/a&gt;&lt;/span&gt;In [&lt;span style=&quot;color:#00D&quot;&gt;5&lt;/span&gt;]: k = KCSD(elec_pos, pots, params={&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;x_min&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;: -&lt;span style=&quot;color:#00D&quot;&gt;2&lt;/span&gt;, &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;x_max&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;: &lt;span style=&quot;color:#00D&quot;&gt;2&lt;/span&gt;, &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;y_min&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;:-&lt;span style=&quot;color:#00D&quot;&gt;2&lt;/span&gt;, &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;y_max&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;:&lt;span style=&quot;color:#00D&quot;&gt;2&lt;/span&gt;})
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n6&quot; name=&quot;n6&quot;&gt;6&lt;/a&gt;&lt;/span&gt;In [&lt;span style=&quot;color:#00D&quot;&gt;6&lt;/span&gt;]: k.estimate_pots()
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n7&quot; name=&quot;n7&quot;&gt;7&lt;/a&gt;&lt;/span&gt;In [&lt;span style=&quot;color:#00D&quot;&gt;7&lt;/span&gt;]: k.estimate_csd()
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n8&quot; name=&quot;n8&quot;&gt;8&lt;/a&gt;&lt;/span&gt;In [&lt;span style=&quot;color:#00D&quot;&gt;8&lt;/span&gt;]: k.plot_all()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 
 &lt;figure&gt;
 	&lt;a href=&quot;http://localhost:4000/images/kcsd2d_reconstruction.png&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/kcsd2d_reconstruction.png&quot; /&gt;&lt;/a&gt;
@@ -950,7 +1002,7 @@ H(x,y) = \begin{cases}
 &lt;/ol&gt;
 
 &lt;figure&gt;
-	&lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
+    &lt;img src=&quot;http://localhost:4000/images/gsoc_horizontal.jpg&quot; width=&quot;100%&quot; /&gt;
 &lt;/figure&gt;
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;

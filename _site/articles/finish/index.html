@@ -5,25 +5,25 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>One dimensional kCSD (week 3) &#8211; pykCSD @ GSoC</title>
-<meta name="description" content="Implementing kCSD 1D">
-<meta name="keywords" content="coding">
+<title>Final evaluation &#8211; pykCSD @ GSoC</title>
+<meta name="description" content="Final evaluation">
+<meta name="keywords" content="finish">
 
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="One dimensional kCSD (week 3)">
-<meta property="og:description" content="Implementing kCSD 1D">
-<meta property="og:url" content="http://localhost:4000/articles/week3/">
+<meta property="og:title" content="Final evaluation">
+<meta property="og:description" content="Final evaluation">
+<meta property="og:url" content="http://localhost:4000/articles/finish/">
 <meta property="og:site_name" content="pykCSD @ GSoC">
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/articles/week3/">
+<link rel="canonical" href="http://localhost:4000/articles/finish/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="pykCSD @ GSoC Feed">
 
 
@@ -110,82 +110,68 @@
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <span class="entry-tags"><a href="http://localhost:4000/tags/#coding" title="Pages tagged coding">coding</a></span>
+        <span class="entry-tags"><a href="http://localhost:4000/tags/#finish" title="Pages tagged finish">finish</a></span>
         
-          <h1 class="entry-title">One dimensional kCSD (week 3)</h1>
+          <h1 class="entry-title">Final evaluation</h1>
         
       </header>
       <footer class="entry-meta">
         <img src="http://localhost:4000/images/profi_photo.jpg" alt="Grzegorz Parka photo" class="author-photo">
         <span class="author vcard">By <span class="fn"><a href="http://localhost:4000/about/" title="About Grzegorz Parka">Grzegorz Parka</a></span></span>
-        <span class="entry-date date published"><time datetime="2014-06-05T00:00:00+02:00"><i class="icon-calendar-empty"></i> June 05, 2014</time></span>
-        <span class="entry-date date modified"><time datetime="2014-06-05"><i class="icon-pencil"></i> June 05, 2014</time></span>
+        <span class="entry-date date published"><time datetime="2014-08-24T00:00:00+02:00"><i class="icon-calendar-empty"></i> August 24, 2014</time></span>
+        <span class="entry-date date modified"><time datetime="2014-08-24"><i class="icon-pencil"></i> August 24, 2014</time></span>
         <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a></span>
-        <span><a href="http://localhost:4000/articles/week3/" rel="bookmark" title="One dimensional kCSD (week 3)"><i class="icon-link"></i> Permalink</a></span>
+        <span><a href="http://localhost:4000/articles/finish/" rel="bookmark" title="Final evaluation"><i class="icon-link"></i> Permalink</a></span>
         
         <span class="social-share-facebook">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/week3/" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/finish/" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
         <span class="social-share-twitter">
-            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=One dimensional kCSD (week 3)&url=http://localhost:4000/articles/week3/&via=" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
+            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Final evaluation&url=http://localhost:4000/articles/finish/&via=" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
         <span class="social-share-googleplus">
-            <a href="https://plus.google.com/share?url=http://localhost:4000/articles/week3/" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/articles/finish/" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
             <!-- /.social-share -->
       </footer>
       <div class="entry-content">
-        <p>During this week I am finishing the kCSD implementation that works with data from 1D measurements, moving the code to the main repository and writing tests.</p>
+        <p>The coding phase of Google Summer of Code 2014 is over. So there come the results of final evaluation.</p>
 
-<p>Some thoughts from the last days:</p>
+<h3 id="final-evaluation">Final evaluation</h3>
 
-<ol>
-  <li>
-    <p>I thought there were some problems with cross validation in 1D pykCSD because it was returning high regularization parameters <script type="math/tex">\lambda</script> for model data, where it should return very low values. My mentor, Daniel, suggested that my model sources or potentials could be wrong. And yeah<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, it turned out that I was indeed calculating the initial potentials incorrectly.
-The correct relation in 1D is:</p>
+<blockquote>
+  <p>Hi Grzegorz Parka,</p>
+</blockquote>
 
-    <script type="math/tex; mode=display"> \phi(z) = \frac{1}{2 \sigma} \int  \sqrt{(z-z_0)^2 + R^2 } - \lvert z-z_0 \rvert)C(z) dz</script>
+<blockquote>
+  <p>We have processed the evaluation for your project named Object Oriented Python Kernel Current Source Density toolbox with International &gt; Neuroinformatics Coordinating Facility.</p>
+</blockquote>
 
-    <p>This is done assuming cylindrical symmetry <script type="math/tex">% <![CDATA[
-H(x,y) = \begin{cases}
-                                     1, & \text{if } x^2 + y^2 \leq h^2\\
-                                     0, & \text{ otherwise}
-                                 \end{cases} 
-  %]]></script> </p>
+<blockquote>
+  <p>Congratulations, from our data it seems that you have successfully passed the Google Summer of Code 2014 - Final Evaluation. Please contact your mentor to discuss the results of your evaluation and to plan your goals and development plan for the rest of the program</p>
+</blockquote>
 
-    <p>and <script type="math/tex">C(z)</script> is the measured CSD</p>
+<blockquote>
+  <p>Greetings,
+The Google Open Source Programs Team </p>
+</blockquote>
 
-    <figure>
-     <a href="http://localhost:4000/images/pykcsd1D_cylinder.jpg"><img src="http://localhost:4000/images/pykcsd1D_cylinder.jpg" /></a>
- </figure>
-  </li>
-  <li>
-    <p>What is the added value so far? </p>
+<p>I’m really happy about!</p>
 
-    <p>More generalized scheme for cross validation. The existing script used something like randomized Leave One Out cross validation (which, to confuse me, was commented and called as a KFold cross validation). My <a href="http://nbviewer.ipython.org/github/parkag/notebooks/blob/master/pykCSD/pykCSD%20refactored.ipynb">current version</a> is able to accept any combination of indices (LeaveOneOut, KFold, ShuffleSplit and so on) which can be obtained with the use of index generators from the  Scikit-learn cross_validation module.</p>
-  </li>
-  <li>
-    <p>Already looking more deeply into 2D kCSD code, it turns out that 1D and 2D implementations have more in common than I originally thought. If I recognized it properly, only the basis function management changes among the different method dimensionalities. Everything else is based on kernel operations which look all the same both in 1D and 2D.</p>
-  </li>
-</ol>
+<h3 id="further-development">Further development</h3>
+
+<p>Of course it is not the end of pykCSD project. I’ve just programmed a working alfa version during this summer. The skills that I developed during the project will be further used to maintain and even extend the package.</p>
+
+<p>Also it’s a pleasure to work with Daniel :)</p>
 
 <figure>
-    <img src="http://localhost:4000/images/gsoc_horizontal.jpg" width="100%" />
+	<img src="http://localhost:4000/images/gsoc_horizontal.jpg" width="100%" />
 </figure>
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>I think everything Daniel told me so far turned out to be true and helpful :P <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 
         <div id="disqus_thread"></div><!-- /#disqus_thread -->
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://localhost:4000/articles/week2/" class="btn" title="One dimensional kCSD (week 2)">Previous article</a>
+        <a href="http://localhost:4000/articles/week12/" class="btn" title="Right before the final evaluation (week 12)">Previous article</a>
       
-      
-        <a href="http://localhost:4000/articles/week4/" class="btn" title="Two dimensional kCSD (week 4)">Next article</a>
       
     </nav><!-- /.pagination -->
   </article>

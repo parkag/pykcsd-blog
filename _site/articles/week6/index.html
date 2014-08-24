@@ -140,15 +140,18 @@ After two days of my examination period and I am already done!</p>
 <p>The two dimensional variant of KCSD works.
 A sample reconstruction looks like this:</p>
 
-<pre><code class="language-python">In [1]: from pykCSD.pykCSD import KCSD
-In [2]: import numpy as np
-In [3]: elec_pos = np.array([[0, 0], [0, 1], [1,0], [1,1], [0.5,0.5]])
-In [4]: pots = np.array([0,0,0,0,1])
-In [5]: k = KCSD(elec_pos, pots, params={'x_min': -2, 'x_max': 2, 'y_min':-2, 'y_max':2})
-In [6]: k.estimate_pots()
-In [7]: k.estimate_csd()
-In [8]: k.plot_all()
-</code></pre>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>In [<span style="color:#00D">1</span>]: <span style="color:#080;font-weight:bold">from</span> <span style="color:#B44;font-weight:bold">pykCSD.pykCSD</span> <span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">KCSD</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>In [<span style="color:#00D">2</span>]: <span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">numpy</span> <span style="color:#080;font-weight:bold">as</span> np
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>In [<span style="color:#00D">3</span>]: elec_pos = np.array([[<span style="color:#00D">0</span>, <span style="color:#00D">0</span>], [<span style="color:#00D">0</span>, <span style="color:#00D">1</span>], [<span style="color:#00D">1</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">1</span>,<span style="color:#00D">1</span>], [<span style="color:#60E">0.5</span>,<span style="color:#60E">0.5</span>]])
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>In [<span style="color:#00D">4</span>]: pots = np.array([<span style="color:#00D">0</span>,<span style="color:#00D">0</span>,<span style="color:#00D">0</span>,<span style="color:#00D">0</span>,<span style="color:#00D">1</span>])
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>In [<span style="color:#00D">5</span>]: k = KCSD(elec_pos, pots, params={<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">x_min</span><span style="color:#710">'</span></span>: -<span style="color:#00D">2</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">x_max</span><span style="color:#710">'</span></span>: <span style="color:#00D">2</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">y_min</span><span style="color:#710">'</span></span>:-<span style="color:#00D">2</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">y_max</span><span style="color:#710">'</span></span>:<span style="color:#00D">2</span>})
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>In [<span style="color:#00D">6</span>]: k.estimate_pots()
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span>In [<span style="color:#00D">7</span>]: k.estimate_csd()
+<span class="line-numbers"><a href="#n8" name="n8">8</a></span>In [<span style="color:#00D">8</span>]: k.plot_all()
+</pre></div>
+</div>
+</div>
 
 <figure>
 	<a href="http://localhost:4000/images/kcsd2d_reconstruction.png"><img src="http://localhost:4000/images/kcsd2d_reconstruction.png" /></a>

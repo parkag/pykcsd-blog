@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Final evaluation",
+		  "category"   : "articles",
+		  "url"        : "http://localhost:4000/articles/finish/",
+		  "date"       : "2014-08-24 00:00:00 +0200",
+		  "shortdate"  : "August 24, 2014"
+		} ,
+	
+		{
 		  "title"      : "Right before the final evaluation (week 12)",
 		  "category"   : "articles",
 		  "url"        : "http://localhost:4000/articles/week12/",
